@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var selectedCar = ""
+    var cars = ["차종을 선택하세요", "올 뉴 모닝 (2018)", "기타"]
     
     init() {
             UITabBar.appearance().backgroundColor = UIColor.white
@@ -22,6 +24,33 @@ struct HomeView: View {
                             ScrollViewReader { scrollView in
                                 
                                 Text("차량 정보 입력")
+                                    .padding(.bottom, 30.0)
+                                Text("선택한 차종: \(selectedCar)")
+                                    
+                               
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 22)
+                                        .frame(width: 300, height: 45)
+                                        .foregroundColor(.blue1)
+                                        .shadow(color: .blue1, radius: 10, x: 0, y: 7).opacity(0.4)
+                                    RoundedRectangle(cornerRadius: 22)
+                                        .frame(width: 302, height: 47)
+                                        .foregroundColor(.clear)
+                 
+                                    RoundedRectangle(cornerRadius: 22)
+                                        .frame(width: 300, height: 45)
+                                        .foregroundColor(.white)
+                                    
+                                    Picker("차종을 선택하세요: ", selection: $selectedCar) {
+                                        ForEach(cars, id: \.self) {
+                                            Text($0)
+                                        }
+                                    }.pickerStyle(.menu)
+                                    
+                                }.padding(.bottom, 30.0)
+                                
+                                
+                                
                                 
                             }
                         }
