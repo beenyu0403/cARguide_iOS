@@ -24,6 +24,9 @@
 		CE4090F02AD84FA50057316A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */; };
 		CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F12AD852F50057316A /* SignUpView3.swift */; };
 		CE4090F52AD85A7A0057316A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F42AD85A7A0057316A /* HomeView.swift */; };
+		CE4090F82AD869A10057316A /* ARCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F72AD869A10057316A /* ARCameraView.swift */; };
+		CE4090FA2AD869EB0057316A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F92AD869EB0057316A /* MyPageView.swift */; };
+		CE4090FC2AD86B2F0057316A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090FB2AD86B2E0057316A /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CE4090F12AD852F50057316A /* SignUpView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView3.swift; sourceTree = "<group>"; };
 		CE4090F42AD85A7A0057316A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CE4090F72AD869A10057316A /* ARCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraView.swift; sourceTree = "<group>"; };
+		CE4090F92AD869EB0057316A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		CE4090FB2AD86B2E0057316A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 		CE2F6BA42AC68F5B00B83A76 /* ButtonARGuide */ = {
 			isa = PBXGroup;
 			children = (
+				CE4090F62AD869820057316A /* ARView */,
 				CE4090F32AD85A6D0057316A /* Home */,
 				CE4090EE2AD84C220057316A /* Info.plist */,
 				CE4090EB2AD84AAF0057316A /* SignInView */,
@@ -139,8 +146,18 @@
 			isa = PBXGroup;
 			children = (
 				CE4090F42AD85A7A0057316A /* HomeView.swift */,
+				CE4090F92AD869EB0057316A /* MyPageView.swift */,
+				CE4090FB2AD86B2E0057316A /* SearchView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		CE4090F62AD869820057316A /* ARView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4090F72AD869A10057316A /* ARCameraView.swift */,
+			);
+			path = ARView;
 			sourceTree = "<group>";
 		};
 		D2FF641FB4B25F1D6E8317D1 /* Frameworks */ = {
@@ -261,8 +278,11 @@
 				CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */,
 				CE4090F52AD85A7A0057316A /* HomeView.swift in Sources */,
 				CE4090EA2AD845BF0057316A /* KeyboardExtension.swift in Sources */,
+				CE4090FA2AD869EB0057316A /* MyPageView.swift in Sources */,
 				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
 				CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */,
+				CE4090FC2AD86B2F0057316A /* SearchView.swift in Sources */,
+				CE4090F82AD869A10057316A /* ARCameraView.swift in Sources */,
 				CE2F6BA62AC68F5B00B83A76 /* ButtonARGuideApp.swift in Sources */,
 				CE4090DB2AD83F530057316A /* EmailViewModel.swift in Sources */,
 				CE4090E42AD8451A0057316A /* SignUpView2.swift in Sources */,
