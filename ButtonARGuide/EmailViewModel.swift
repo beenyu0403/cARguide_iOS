@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-//var currentuser = Auth.auth().currentUser
 var currentUser: Firebase.User? = Auth.auth().currentUser
 var currentUserName = ""
 
@@ -57,7 +56,7 @@ class EmailViewModel: ObservableObject {
                 query.getDocuments() { (qs, err) in
                     
                     if qs!.documents.isEmpty {
-                        print("데이터 중복 안 됨 가입 진행 가능")
+                        //print("데이터 중복 안 됨 가입 진행 가능")
                         result = true
                     } else {
                         print("데이터 중복 됨 가입 진행 불가")
@@ -71,14 +70,15 @@ class EmailViewModel: ObservableObject {
     }
     
     func emailAuthSignIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if user != nil{
-                print("login success")
-            }
-            else{
-                print("login fail")
-                print("Error: \(error!)")
-            }
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+//            if user != nil{
+//                print("login success")
+//           }
+//            else{
+//                print("login fail")
+//                print("Error: \(error!)")
+//            }
+            guard let strongSelf = self else { return }
         }
     }
     

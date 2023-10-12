@@ -23,6 +23,7 @@
 		CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090EC2AD84AC60057316A /* SignInView1.swift */; };
 		CE4090F02AD84FA50057316A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */; };
 		CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F12AD852F50057316A /* SignUpView3.swift */; };
+		CE4090F52AD85A7A0057316A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F42AD85A7A0057316A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CE4090EE2AD84C220057316A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CE4090F12AD852F50057316A /* SignUpView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView3.swift; sourceTree = "<group>"; };
+		CE4090F42AD85A7A0057316A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		CE2F6BA42AC68F5B00B83A76 /* ButtonARGuide */ = {
 			isa = PBXGroup;
 			children = (
+				CE4090F32AD85A6D0057316A /* Home */,
 				CE4090EE2AD84C220057316A /* Info.plist */,
 				CE4090EB2AD84AAF0057316A /* SignInView */,
 				CE4090DC2AD840390057316A /* GoogleService-Info.plist */,
@@ -130,6 +133,14 @@
 				CE4090EC2AD84AC60057316A /* SignInView1.swift */,
 			);
 			path = SignInView;
+			sourceTree = "<group>";
+		};
+		CE4090F32AD85A6D0057316A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE4090F42AD85A7A0057316A /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		D2FF641FB4B25F1D6E8317D1 /* Frameworks */ = {
@@ -248,6 +259,7 @@
 				CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */,
 				CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */,
 				CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */,
+				CE4090F52AD85A7A0057316A /* HomeView.swift in Sources */,
 				CE4090EA2AD845BF0057316A /* KeyboardExtension.swift in Sources */,
 				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
 				CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */,
@@ -386,9 +398,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ButtonARGuide/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -417,9 +427,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ButtonARGuide/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

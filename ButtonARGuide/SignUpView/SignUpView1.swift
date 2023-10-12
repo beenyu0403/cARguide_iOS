@@ -94,7 +94,7 @@ struct SignUpView1: View {
                                 isEmailDuplication = false
                             }else{
                                 isEmailDuplication = true
-                                print(isEmailDuplication)
+                                //print(isEmailDuplication)
                             }
                         }
                         .focused($focusField, equals: .userEmail)
