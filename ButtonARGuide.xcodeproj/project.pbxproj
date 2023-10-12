@@ -12,6 +12,17 @@
 		CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */; };
 		CE2F6BAA2AC68F5D00B83A76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2F6BA92AC68F5D00B83A76 /* Assets.xcassets */; };
 		CE2F6BAD2AC68F5D00B83A76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2F6BAC2AC68F5D00B83A76 /* Preview Assets.xcassets */; };
+		CE4090DB2AD83F530057316A /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090DA2AD83F530057316A /* EmailViewModel.swift */; };
+		CE4090DD2AD840390057316A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE4090DC2AD840390057316A /* GoogleService-Info.plist */; };
+		CE4090E02AD841A90057316A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE4090DF2AD841A90057316A /* FirebaseAuth */; };
+		CE4090E22AD841A90057316A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE4090E12AD841A90057316A /* FirebaseFirestore */; };
+		CE4090E42AD8451A0057316A /* SignUpView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090E32AD8451A0057316A /* SignUpView2.swift */; };
+		CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090E52AD8453D0057316A /* SignUpView1.swift */; };
+		CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090E72AD845890057316A /* ColorExtentsion.swift */; };
+		CE4090EA2AD845BF0057316A /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090E92AD845BF0057316A /* KeyboardExtension.swift */; };
+		CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090EC2AD84AC60057316A /* SignInView1.swift */; };
+		CE4090F02AD84FA50057316A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */; };
+		CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4090F12AD852F50057316A /* SignUpView3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +34,16 @@
 		CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE2F6BA92AC68F5D00B83A76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE2F6BAC2AC68F5D00B83A76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE4090DA2AD83F530057316A /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		CE4090DC2AD840390057316A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE4090E32AD8451A0057316A /* SignUpView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView2.swift; sourceTree = "<group>"; };
+		CE4090E52AD8453D0057316A /* SignUpView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView1.swift; sourceTree = "<group>"; };
+		CE4090E72AD845890057316A /* ColorExtentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtentsion.swift; sourceTree = "<group>"; };
+		CE4090E92AD845BF0057316A /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
+		CE4090EC2AD84AC60057316A /* SignInView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView1.swift; sourceTree = "<group>"; };
+		CE4090EE2AD84C220057316A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CE4090F12AD852F50057316A /* SignUpView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +52,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93248465E3122CBBA9BF0F08 /* Pods_ButtonARGuide.framework in Frameworks */,
+				CE4090E02AD841A90057316A /* FirebaseAuth in Frameworks */,
+				CE4090E22AD841A90057316A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +66,6 @@
 				180B42E0541FC00D0B95CA6B /* Pods-ButtonARGuide.debug.xcconfig */,
 				0064B1DA267BDB4C60AFBF78 /* Pods-ButtonARGuide.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -68,10 +90,18 @@
 		CE2F6BA42AC68F5B00B83A76 /* ButtonARGuide */ = {
 			isa = PBXGroup;
 			children = (
+				CE4090EE2AD84C220057316A /* Info.plist */,
+				CE4090EB2AD84AAF0057316A /* SignInView */,
+				CE4090DC2AD840390057316A /* GoogleService-Info.plist */,
+				CE4090D52AD83E840057316A /* SignUpView */,
 				CE2F6BA52AC68F5B00B83A76 /* ButtonARGuideApp.swift */,
 				CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */,
 				CE2F6BA92AC68F5D00B83A76 /* Assets.xcassets */,
 				CE2F6BAB2AC68F5D00B83A76 /* Preview Content */,
+				CE4090DA2AD83F530057316A /* EmailViewModel.swift */,
+				CE4090E72AD845890057316A /* ColorExtentsion.swift */,
+				CE4090E92AD845BF0057316A /* KeyboardExtension.swift */,
+				CE4090EF2AD84FA50057316A /* Launch Screen.storyboard */,
 			);
 			path = ButtonARGuide;
 			sourceTree = "<group>";
@@ -82,6 +112,24 @@
 				CE2F6BAC2AC68F5D00B83A76 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE4090D52AD83E840057316A /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4090E52AD8453D0057316A /* SignUpView1.swift */,
+				CE4090E32AD8451A0057316A /* SignUpView2.swift */,
+				CE4090F12AD852F50057316A /* SignUpView3.swift */,
+			);
+			path = SignUpView;
+			sourceTree = "<group>";
+		};
+		CE4090EB2AD84AAF0057316A /* SignInView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4090EC2AD84AC60057316A /* SignInView1.swift */,
+			);
+			path = SignInView;
 			sourceTree = "<group>";
 		};
 		D2FF641FB4B25F1D6E8317D1 /* Frameworks */ = {
@@ -109,6 +157,10 @@
 			dependencies = (
 			);
 			name = ButtonARGuide;
+			packageProductDependencies = (
+				CE4090DF2AD841A90057316A /* FirebaseAuth */,
+				CE4090E12AD841A90057316A /* FirebaseFirestore */,
+			);
 			productName = ButtonARGuide;
 			productReference = CE2F6BA22AC68F5B00B83A76 /* ButtonARGuide.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +189,9 @@
 				Base,
 			);
 			mainGroup = CE2F6B992AC68F5B00B83A76;
+			packageReferences = (
+				CE4090DE2AD841A90057316A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CE2F6BA32AC68F5B00B83A76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +208,8 @@
 			files = (
 				CE2F6BAD2AC68F5D00B83A76 /* Preview Assets.xcassets in Resources */,
 				CE2F6BAA2AC68F5D00B83A76 /* Assets.xcassets in Resources */,
+				CE4090F02AD84FA50057316A /* Launch Screen.storyboard in Resources */,
+				CE4090DD2AD840390057316A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +245,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */,
 				CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */,
+				CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */,
+				CE4090EA2AD845BF0057316A /* KeyboardExtension.swift in Sources */,
+				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
+				CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */,
 				CE2F6BA62AC68F5B00B83A76 /* ButtonARGuideApp.swift in Sources */,
+				CE4090DB2AD83F530057316A /* EmailViewModel.swift in Sources */,
+				CE4090E42AD8451A0057316A /* SignUpView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +385,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ButtonARGuide/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ButtonARGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -350,9 +416,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ButtonARGuide/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ButtonARGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -390,6 +458,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE4090DE2AD841A90057316A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE4090DF2AD841A90057316A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4090DE2AD841A90057316A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CE4090E12AD841A90057316A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4090DE2AD841A90057316A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE2F6B9A2AC68F5B00B83A76 /* Project object */;
 }
