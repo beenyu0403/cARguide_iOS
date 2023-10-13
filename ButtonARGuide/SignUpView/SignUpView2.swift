@@ -85,7 +85,8 @@ struct SignUpView2: View {
                                 .font(.system(size: 13, weight: .thin))
                         }
                         else{
-                            SecureField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
+                            PlaceHolderField2("비밀번호 입력 (8자리 이상, 영어+숫자)", font: .custom("", fixedSize: 11), color: .gray, text: $userPw)
+                            //SecureField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
                                 .focused($focusField, equals: .userPw)
                                 .disableAutocorrection(true) //자동 수정 비활성화
                                 .textInputAutocapitalization(.never)
@@ -139,7 +140,8 @@ struct SignUpView2: View {
                                 .foregroundColor(.black)
                                 .font(.system(size: 13, weight: .thin))
                         }else {
-                            SecureField("비밀번호를 다시 입력하세요.", text: $userPw2)
+                            PlaceHolderField2("비밀번호를 다시 입력하세요.", font: .custom("", fixedSize: 11), color: .gray, text: $userPw2)
+                            //SecureField("비밀번호를 다시 입력하세요.", text: $userPw2)
                                 .focused($focusField, equals: .userPw2)
                                 .disableAutocorrection(true)
                                 .textInputAutocapitalization(.never)
