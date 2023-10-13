@@ -52,9 +52,11 @@ struct SignUpView2: View {
                 
                 VStack {
                     Text("차량 내부 버튼 정보를")
+                        .foregroundColor(.black)
                         .font(.system(size: 22, weight: .semibold))
                         .frame(width: 280, height: 30, alignment: .leading)
                     Text("AR로 쉽게!")
+                        .foregroundColor(.black)
                         .font(.system(size: 22, weight: .semibold))
                         .frame(width: 280, height: 30, alignment: .leading)
                         .padding(.bottom, 60.0)
@@ -72,12 +74,14 @@ struct SignUpView2: View {
                             .frame(width: 300, height: 45)
                             .foregroundColor(.white)
                         if isActivePw{
-                            TextField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
+                            PlaceHolderField("비밀번호 입력 (8자리 이상, 영어+숫자)", font: .custom("", fixedSize: 11), color: .gray, text: $userPw)
+                            //TextField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
                                 .focused($focusField, equals: .userPw)
                                 .disableAutocorrection(true) //자동 수정 비활성화
                                 .textInputAutocapitalization(.never)
                                 .keyboardType(.alphabet)
                                 .padding(.leading, 81)
+                                .foregroundColor(.black)
                                 .font(.system(size: 13, weight: .thin))
                         }
                         else{
@@ -87,6 +91,7 @@ struct SignUpView2: View {
                                 .textInputAutocapitalization(.never)
                                 .keyboardType(.alphabet)
                                 .padding(.leading, 81)
+                                .foregroundColor(.black)
                                 .font(.system(size: 13, weight: .thin))
                         }
                         
@@ -124,12 +129,14 @@ struct SignUpView2: View {
                             .frame(width: 300, height: 45)
                             .foregroundColor(.white)
                         if isActivePw2 {
-                            TextField("비밀번호를 다시 입력하세요.", text: $userPw2)
+                            PlaceHolderField("비밀번호를 다시 입력하세요.", font: .custom("", fixedSize: 11), color: .gray, text: $userPw2)
+                            //TextField("비밀번호를 다시 입력하세요.", text: $userPw2)
                                 .focused($focusField, equals: .userPw2)
                                 .disableAutocorrection(true)
                                 .textInputAutocapitalization(.never)
                                 .keyboardType(.emailAddress)
                                 .padding(.leading, 81)
+                                .foregroundColor(.black)
                                 .font(.system(size: 13, weight: .thin))
                         }else {
                             SecureField("비밀번호를 다시 입력하세요.", text: $userPw2)
@@ -138,6 +145,7 @@ struct SignUpView2: View {
                                 .textInputAutocapitalization(.never)
                                 .keyboardType(.emailAddress)
                                 .padding(.leading, 81)
+                                .foregroundColor(.black)
                                 .font(.system(size: 13, weight: .thin))
                         }
                         
@@ -168,11 +176,13 @@ struct SignUpView2: View {
                             .foregroundColor(.buttonblue1)
                         
                         Text("서비스 이용 약관")
+                            .foregroundColor(.black)
                             .font(.system(size: 11, weight: .regular))
                             .padding(.top, 213)
                             .padding(.leading, 30)
                             .frame(width: 250, height: 30, alignment: .leading)
                         Text("개인정보 수집 및 이용 동의")
+                            .foregroundColor(.black)
                             .font(.system(size: 11, weight: .regular))
                             .padding(.top, 258)
                             .padding(.leading, 30)

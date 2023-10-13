@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var tag:Int? = nil
     @State var selectedCar = ""
     var cars = ["차종을 선택하세요", "올 뉴 모닝 (2018)", "기타"]
     
@@ -25,10 +26,13 @@ struct HomeView: View {
                                 
                                 Text("차량 정보 입력")
                                     .padding(.bottom, 30.0)
+                                    .foregroundColor(.black)
                                 Text("선택한 차종: \(selectedCar)")
+                                    .foregroundColor(.black)
                                     
                                
                                 ZStack {
+                                    
                                     RoundedRectangle(cornerRadius: 22)
                                         .frame(width: 300, height: 45)
                                         .foregroundColor(.blue1)
@@ -49,7 +53,30 @@ struct HomeView: View {
                                     
                                 }.padding(.bottom, 30.0)
                                 
-                                
+                                ZStack{
+                                    NavigationLink(destination: ARSceneView(), tag: 1, selection: self.$tag ) {
+                                              EmptyView()
+                                            }
+                                    
+                                    Button(action: {
+                                        self.tag = 1
+                                    }){
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 22)
+                                                .frame(width: 320, height: 50)
+                                                .foregroundColor(.pink1)
+                                                .shadow(color: .pink1, radius: 10, x: 0, y: 7).opacity(0.4)
+                                            RoundedRectangle(cornerRadius: 22)
+                                                .frame(width: 320, height: 50)
+                                                .foregroundColor(.pink1)
+                                            Text("AR 화면으로 이동하기").lineLimit(1)
+                                                .font(.system(size: 17, weight: .medium))
+                                                .frame(width: 320, height: 50, alignment: .center)
+                                                .foregroundColor(Color.white)
+                                        }
+                                    }.padding(.top, 300)
+                                   
+                                }
                                 
                                 
                             }
@@ -75,13 +102,15 @@ struct HomeView: View {
                             Text("검색")
                         }
                         
-        
-                        ScrollViewReader { scrollView in
-                            ScrollView {
-                                ZStack{
-                                    
-                                    
-                                    MyPageView()
+                        ZStack{
+                            Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
+                            ScrollViewReader { scrollView in
+                                ScrollView {
+                                    ZStack{
+                                        
+                                        
+                                        MyPageView()
+                                    }
                                 }
                             }
                         }

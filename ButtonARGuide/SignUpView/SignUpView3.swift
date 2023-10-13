@@ -17,6 +17,7 @@ struct SignUpView3: View {
                     .font(.system(size: 22, weight: .semibold))
                     .frame(width: 280, height: 30, alignment: .leading)
                     .padding(.top, 30)
+                    .foregroundColor(.black)
                 Image("Logo")
                     .resizable()
                     .frame(width: 350, height: 200)
@@ -26,6 +27,7 @@ struct SignUpView3: View {
                     .font(.system(size: 22, weight: .semibold))
                     .frame(width: 280, height: 30, alignment: .leading)
                     .padding(.bottom, 60.0)
+                    .foregroundColor(.black)
                 
                 // MARK: - 로그인 버튼
                 Button(action: {

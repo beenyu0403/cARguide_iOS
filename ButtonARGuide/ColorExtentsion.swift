@@ -38,3 +38,10 @@ extension Color {
    //static let backyellow = Color(hex: "#FFFDEB")
     //static let backpuple = Color(hex: "#FDF1FF")
 }
+
+//AR color tap test
+extension UIColor {
+    static func random() -> UIColor {
+        UIColor(displayP3Red: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1), alpha: 1)
+    }
+}

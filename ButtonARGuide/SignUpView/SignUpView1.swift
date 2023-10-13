@@ -47,9 +47,11 @@ struct SignUpView1: View {
             
             VStack {
                 Text("차량 내부 버튼 정보를")
+                    .foregroundColor(.black)
                     .font(.system(size: 22, weight: .semibold))
                     .frame(width: 280, height: 30, alignment: .leading)
                 Text("AR로 쉽게!")
+                    .foregroundColor(.black)
                     .font(.system(size: 22, weight: .semibold))
                     .frame(width: 280, height: 30, alignment: .leading)
                     .padding(.bottom, 60.0)
@@ -63,11 +65,13 @@ struct SignUpView1: View {
                     RoundedRectangle(cornerRadius: 22)
                         .frame(width: 300, height: 45)
                         .foregroundColor(.white)
-                    TextField("이름을 입력하세요.", text: $userName)
+                    PlaceHolderField("이름을 입력하세요.", font: .custom("", fixedSize: 11), color: .gray, text: $userName)
+                    //TextField("이름을 입력하세요.", text: $userName)
                         .focused($focusField, equals: .userName)
                         .disableAutocorrection(true) //자동 수정 비활성화
                         .textInputAutocapitalization(.never) //대문자 비활성화
                         .padding(.leading, 81)
+                        .foregroundColor(.black)
                         .font(.system(size: 13, weight: .thin))
                     
                 }.padding(.bottom, 30.0)
@@ -85,8 +89,9 @@ struct SignUpView1: View {
                     RoundedRectangle(cornerRadius: 22)
                         .frame(width: 300, height: 45)
                         .foregroundColor(.white)
-                        
-                    TextField("이메일을 입력하세요.", text: $userEmail)
+                    
+                    PlaceHolderField("이메일을 입력하세요.", font: .custom("", fixedSize: 11), color: .gray, text: $userEmail)
+                    //TextField("이메일을 입력하세요.", text: $userEmail)
                         .onChange(of: userEmail){ _ in
                             isEmailDuplicationLabel = false
                             isEmailDuplicationButton = false
@@ -102,6 +107,7 @@ struct SignUpView1: View {
                         .textInputAutocapitalization(.never)
                         .keyboardType(.emailAddress)
                         .padding(.leading, 81)
+                        .foregroundColor(.black)
                         .font(.system(size: 13, weight: .thin))
                         
                     

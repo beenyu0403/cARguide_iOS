@@ -11,6 +11,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack() {
+            ZStack {
+                Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
             // MARK: - 로고
             VStack {
                 Image("Logo")
@@ -35,8 +37,8 @@ struct ContentView: View {
                             .foregroundColor(Color.white)
                     }
                 }.padding(.bottom, 30.0)
-                    
-             
+                
+                
                 
                 NavigationLink(destination: SignInView1()) {
                     ZStack {
@@ -57,8 +59,9 @@ struct ContentView: View {
                 }
                 
             }.navigationBarHidden(true)
-                
-            .padding()
+            
+                .padding()
+        }
         }
     }
 }
