@@ -34,10 +34,12 @@ struct ARViewContainer: UIViewRepresentable {
         context.coordinator.view = arView
         arView.session.delegate = context.coordinator
         
+        // ARReferenceImage를 이용하여 이미지 트래킹을 하는 방법도 고려
+        // environmentTexturing를 이용해서 텍스처링하는 방법도 고려
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         arView.session.run(configuration)
-
+        
         
         let anchor = AnchorEntity(plane: .any)
         // 일회성인건가...?
