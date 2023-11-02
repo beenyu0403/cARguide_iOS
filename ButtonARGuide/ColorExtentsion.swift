@@ -30,7 +30,8 @@ extension Color {
    //static let yellow1 = Color(hex: "#FFDC48")
    static let pink1 = Color(hex: "#E65D92") //진한 보라색
    static let blue1 = Color(hex: "#8DC6F5") //진한 파란색
-    static let blue2 = Color(hex: "#C0E0F9")
+    static let blue2 = Color(hex: "#E2E2E2") //연한 회색
+    //static let blue2 = Color(hex: "#C0E0F9")
     static let buttonblue1 = Color(hex: "#6793F7") //버튼 진한 파란색
     static let buttonblue2 = Color(hex: "#A3BFFB") //버튼 연한 파란색
     static let pink2 = Color(hex: "#F1A6C3")

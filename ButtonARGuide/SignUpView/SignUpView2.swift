@@ -103,7 +103,7 @@ struct SignUpView2: View {
                             if isActivePw {
                                 Image("blueEye2")
                             }else {
-                                Image("blueEye1")
+                                Image("grayEye1")
                             }
                             
                         }.padding(.leading, 250)
@@ -158,7 +158,7 @@ struct SignUpView2: View {
                             if isActivePw2 {
                                 Image("blueEye2")
                             }else {
-                                Image("blueEye1")
+                                Image("grayEye1")
                             }
                             
                         }.padding(.leading, 250)
@@ -190,48 +190,60 @@ struct SignUpView2: View {
                             .padding(.leading, 30)
                             .frame(width: 250, height: 30, alignment: .leading)
                         
-                    }.padding(.bottom, 20.0)
+                    }.padding(.bottom, 140.0)
                         .onAppear (perform: UIApplication.shared.hideKeyboard)
                     
                     
-                    
-                    if nextButtonCondition ()  {
-                        Button(action: {
-                            self.isPresented.toggle()
-                        }){
+                    ZStack{
+                        if nextButtonCondition ()  {
+                            Button(action: {
+                                self.isPresented.toggle()
+                                db.collection("USER").document(newUser.email).setData([
+                                    "email": newUser.email,
+                                    "name": newUser.name,
+                                    "password": newUser.password
+                                ]) { err in
+                                    if let err = err {
+                                        print("Error writing document: \(err)")
+                                    } else {
+                                        print("Document successfully written!")
+                                    }
+                                }
+                                EmailviewModel.emailAuthSignUp(email: newUser.email, userName: newUser.name, password: newUser.password)
+                            }){
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 22)
+                                        .frame(width: 320, height: 50)
+                                        .foregroundColor(.buttonblue1)
+                                        .shadow(color: .buttonblue1, radius: 10, x: 0, y: 7).opacity(0.4)
+                                    RoundedRectangle(cornerRadius: 22)
+                                        .frame(width: 320, height: 50)
+                                        .foregroundColor(.buttonblue1)
+                                    Text("다음").lineLimit(1)
+                                        .font(.system(size: 17, weight: .medium))
+                                        .frame(width: 320, height: 50, alignment: .center)
+                                        .foregroundColor(Color.white)
+                                }
+                            }.fullScreenCover(isPresented: $isPresented){
+                                SignUpView3()
+                            }
+                        }else {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 22)
                                     .frame(width: 320, height: 50)
-                                    .foregroundColor(.buttonblue1)
-                                    .shadow(color: .buttonblue1, radius: 10, x: 0, y: 7).opacity(0.4)
+                                    .foregroundColor(.blue2)
+                                    .shadow(color: .blue2, radius: 10, x: 0, y: 7).opacity(0.4)
                                 RoundedRectangle(cornerRadius: 22)
                                     .frame(width: 320, height: 50)
-                                    .foregroundColor(.buttonblue1)
+                                    .foregroundColor(.blue2)
                                 Text("다음").lineLimit(1)
                                     .font(.system(size: 17, weight: .medium))
                                     .frame(width: 320, height: 50, alignment: .center)
                                     .foregroundColor(Color.white)
-                            }.padding(.top, 120)
-                        }.fullScreenCover(isPresented: $isPresented){
-                            SignUpView3()
+                            }
                         }
-                    }else {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 22)
-                                .frame(width: 320, height: 50)
-                                .foregroundColor(.buttonblue1)
-                                .shadow(color: .buttonblue1, radius: 10, x: 0, y: 7).opacity(0.4)
-                            RoundedRectangle(cornerRadius: 22)
-                                .frame(width: 320, height: 50)
-                                .foregroundColor(.buttonblue2)
-                            Text("다음").lineLimit(1)
-                                .font(.system(size: 17, weight: .medium))
-                                .frame(width: 320, height: 50, alignment: .center)
-                                .foregroundColor(Color.white)
-                        }.padding(.top, 120)
+                        
                     }
-        
-                   
                     
                 }
                 //MARK: - 서비스 동의 버튼 공간
@@ -248,7 +260,7 @@ struct SignUpView2: View {
                             .resizable()
                             .frame(width: 22, height: 22)
                     }else {
-                        Image("bluecheckbutton1")
+                        Image("graycheckbutton1")
                             .resizable()
                             .frame(width: 22, height: 22)
                             
@@ -267,7 +279,7 @@ struct SignUpView2: View {
                             .frame(width: 22, height: 22)
                          
                     }else {
-                        Image("bluecheckbutton1")
+                        Image("graycheckbutton1")
                             .resizable()
                             .frame(width: 22, height: 22)
                                                 
@@ -287,7 +299,7 @@ struct SignUpView2: View {
                             .frame(width: 22, height: 22)
                 
                     }else {
-                        Image("bluecheckbutton1")
+                        Image("graycheckbutton1")
                             .resizable()
                             .frame(width: 22, height: 22)
                         
@@ -354,18 +366,6 @@ struct SignUpView2: View {
             newUser.password = userPw
             print(newUser.password)
             
-            db.collection("USER").document(newUser.email).setData([
-                "email": newUser.email,
-                "name": newUser.name,
-                "password": newUser.password
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                }
-            }
-            EmailviewModel.emailAuthSignUp(email: newUser.email, userName: newUser.name, password: newUser.password)
             
             return true
         }

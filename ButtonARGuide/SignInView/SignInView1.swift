@@ -14,13 +14,26 @@ struct SignInView1: View {
     @State var isActivePw = false
     @State var isPresented = false
     @State var isActiveLogin = false
+    @State var isNotUser = false
     @EnvironmentObject var EmailviewModel: EmailViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     enum Field: Hashable {
         case userEmail, userPw
       }
     @FocusState private var focusField: Field?
-    
+    var backButton : some View {  // <--커스텀 버튼
+            Button{
+                self.presentationMode.wrappedValue.dismiss()
+            } label: {
+                HStack {
+                    Image(systemName: "chevron.left") // 화살표 Image
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(Color.black)
+                    Text("로그인")
+                        .foregroundColor(Color.black)
+                }
+            }
+        }
     var body: some View {
         ZStack{
             Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
@@ -49,7 +62,7 @@ struct SignInView1: View {
                     PlaceHolderField("아이디(이메일)을 입력하세요.", font: .custom("", fixedSize: 11), color: .gray, text: $userEmail)
                     //TextField("아이디(이메일)을 입력하세요.", text: $userEmail)
                         .onChange(of: userEmail){ _ in
-
+                            isNotUser = false
                         }
                         .focused($focusField, equals: .userEmail)
                         .disableAutocorrection(true)
@@ -84,6 +97,9 @@ struct SignInView1: View {
                     if isActivePw{
                         PlaceHolderField("비밀번호 입력 (8자리 이상, 영어+숫자)", font: .custom("", fixedSize: 11), color: .gray, text: $userPw)
                         //TextField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
+                            .onChange(of: userPw){ _ in
+                                isNotUser = false
+                            }
                             .focused($focusField, equals: .userPw)
                             .disableAutocorrection(true) //자동 수정 비활성화
                             .textInputAutocapitalization(.never)
@@ -112,7 +128,7 @@ struct SignInView1: View {
                         if isActivePw {
                             Image("blueEye2")
                         }else {
-                            Image("blueEye1")
+                            Image("grayEye1")
                         }
                         
                     }.padding(.leading, 250)
@@ -123,6 +139,11 @@ struct SignInView1: View {
                         .frame(width: 250, height: 30, alignment: .leading)
                         .foregroundColor(checkPwCondition() ? .clear : Color.red)
                     
+                    Text("가입된 회원이 아닙니다.")
+                        .font(.system(size: 11, weight: .regular))
+                        .padding(.top, 150)
+                        .frame(width: 250, height: 30, alignment: .center)
+                        .foregroundColor(!isNotUser ? .clear : Color.red)
                     
                 }.padding(.bottom, 120.0)
                     .onAppear (perform: UIApplication.shared.hideKeyboard)
@@ -133,7 +154,9 @@ struct SignInView1: View {
                     Button(action: {
                         if isActiveLogin {
                             self.isPresented.toggle()
+                            self.isNotUser = false
                         }else {
+                            self.isNotUser = true
                             print("로그인 실패")
                         }
                     }){
@@ -157,8 +180,8 @@ struct SignInView1: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 22)
                             .frame(width: 320, height: 50)
-                            .foregroundColor(.blue1)
-                            .shadow(color: .blue1, radius: 10, x: 0, y: 7).opacity(0.4)
+                            .foregroundColor(.blue2)
+                            .shadow(color: .blue2, radius: 10, x: 0, y: 7).opacity(0.4)
                         RoundedRectangle(cornerRadius: 22)
                             .frame(width: 320, height: 50)
                             .foregroundColor(.blue2)
@@ -174,7 +197,8 @@ struct SignInView1: View {
             }
             
             
-        }
+        }.navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton)
     }
     //MARK: - 함수 구현 공간
     // 이메일 형식 검사

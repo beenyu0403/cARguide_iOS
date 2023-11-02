@@ -122,7 +122,7 @@ struct SignUpView1: View {
                             
                             Image("bluecheckbutton2")
                         }else {
-                            Image("bluecheckbutton1")
+                            Image("graycheckbutton1")
                         
                         }
                                     
@@ -171,11 +171,11 @@ struct SignUpView1: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 22)
                             .frame(width: 320, height: 50)
-                            .foregroundColor(.buttonblue1)
-                            .shadow(color: .buttonblue1, radius: 10, x: 0, y: 7).opacity(0.4)
+                            .foregroundColor(.blue2)
+                            .shadow(color: .blue2, radius: 10, x: 0, y: 7).opacity(0.4)
                         RoundedRectangle(cornerRadius: 22)
                             .frame(width: 320, height: 50)
-                            .foregroundColor(.buttonblue2)
+                            .foregroundColor(.blue2)
                         Text("다음").lineLimit(1)
                             .font(.system(size: 17, weight: .medium))
                             .frame(width: 320, height: 50, alignment: .center)

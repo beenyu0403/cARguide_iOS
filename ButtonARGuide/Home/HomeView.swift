@@ -25,10 +25,12 @@ struct HomeView: View {
                             ScrollViewReader { scrollView in
                                 
                                 Text("차량 정보 입력")
+                                    .padding(.top, 30.0)
                                     .padding(.bottom, 30.0)
                                     .foregroundColor(.black)
                                 Text("선택한 차종: \(selectedCar)")
                                     .foregroundColor(.black)
+                                    .padding(.bottom, 80.0)
                                     
                                
                                 ZStack {
@@ -51,7 +53,7 @@ struct HomeView: View {
                                         }
                                     }.pickerStyle(.menu)
                                     
-                                }.padding(.bottom, 30.0)
+                                }.padding(.bottom, 250.0)
                                 
                                 ZStack{
                                     NavigationLink(destination: ARSceneView(), tag: 1, selection: self.$tag ) {
@@ -64,17 +66,17 @@ struct HomeView: View {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 22)
                                                 .frame(width: 320, height: 50)
-                                                .foregroundColor(.pink1)
-                                                .shadow(color: .pink1, radius: 10, x: 0, y: 7).opacity(0.4)
+                                                .foregroundColor(.buttonblue1)
+                                                .shadow(color: .buttonblue1, radius: 10, x: 0, y: 7).opacity(0.4)
                                             RoundedRectangle(cornerRadius: 22)
                                                 .frame(width: 320, height: 50)
-                                                .foregroundColor(.pink1)
+                                                .foregroundColor(.buttonblue1)
                                             Text("AR 화면으로 이동하기").lineLimit(1)
                                                 .font(.system(size: 17, weight: .medium))
                                                 .frame(width: 320, height: 50, alignment: .center)
                                                 .foregroundColor(Color.white)
                                         }
-                                    }.padding(.top, 300)
+                                    }
                                    
                                 }
                                 
@@ -135,28 +137,4 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-struct MainMy: View {
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.pink1)
-                .frame(width: 355, height: 206)
-            VStack{
-                HStack{
-                    Text("내 정보")
-                        .padding(.trailing, 240)
-                        
-                }
-                Text("마이페이지")
-                    .bold()
-                    .padding()
-                    .multilineTextAlignment(.leading)
-                Text(currentUser?.email ?? "비로그인")
-                Text(currentUserName)
-                Spacer().frame(height:50)
-            }
-        }
-    }
 
-}
