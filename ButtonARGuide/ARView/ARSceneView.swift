@@ -13,30 +13,22 @@ import RealityKit
 
 struct ARViewContainer: UIViewRepresentable {
     // To Do: 모델 추가
+    let arView = ARView(frame: .zero)   // Screen size : 1179*2556(iPhone 15 pro)
     
     // MARK: - Create UIView(UIKit) & initialize
     func makeUIView(context: Context) -> ARView {
         print("AR DUBUG: Make UIView")
-        // To Do: Navigation bar에 사용법 버튼 생성 및 사용법 페이지 생성
         
-        // Screen size : 1179*2556(iPhone 15 pro)
-        let arView = ARView(frame: .zero)
-        print("AR DEBUG: ARView appear")
-        
-        // To Do: ARReferenceImage를 이용하여 이미지 트래킹을 하는 방법도 고려
         // To Do: environmentTexturing를 이용해서 텍스처링하는 방법도 고려
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
-        arView.session.run(configuration)
         
         // Add tag mesh when (tap) recognized
         arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.isViewTapped)))
+        arView.session.run(configuration)   // 상세 페이지로 넘어가면 Pause를 이용하여 멈추자
+        print("AR DEBUG: ARView appear")
         
         return arView
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
     }
     
     // MARK: - Update UIView(UIKit)
@@ -44,12 +36,18 @@ struct ARViewContainer: UIViewRepresentable {
     func updateUIView(_ uiView: ARView, context: Context) {
         print("AR DEBUG: Update UIView")
     }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
 }
 
 // MARK: - Content View
 struct ARSceneView : View {
+    @State private var detectedObjectLabel: String = "Finding object"
+    
     var body: some View {
-        ARViewContainer().edgesIgnoringSafeArea(.all)
+        ARViewContainer().ignoresSafeArea(edges: .all)
     }
 }
 
