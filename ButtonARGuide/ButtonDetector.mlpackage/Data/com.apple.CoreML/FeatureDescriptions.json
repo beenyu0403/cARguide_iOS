@@ -1,0 +1,15 @@
+{
+  "Outputs" : {
+    "var_904" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "image" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}
