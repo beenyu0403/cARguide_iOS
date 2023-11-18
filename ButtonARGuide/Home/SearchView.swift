@@ -29,27 +29,73 @@ struct blueGroupBox: GroupBoxStyle {
                         
     }
 }
+struct NavigationItem: Identifiable, Hashable {
+    let id: Int
+    let title: String
+    let imageName: String
+    let destination: AnyView
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: NavigationItem, rhs: NavigationItem) -> Bool {
+        lhs.id == rhs.id
+    }
+}
 
 struct SearchView: View {
-    var body: some View {
-        VStack{
-            
-            Text("기능 분류")
-                .foregroundColor(.black)
-                .padding(.top, 20)
-            
-            Button(action: {
-                
-                
-            }){
-                
-                GroupBox {
-                    Text("1번")
-                        .foregroundColor(.black)
-                }.groupBoxStyle(blueGroupBox())
-                            
-            }.padding(.top, 20)
+    let navigationItems: [NavigationItem] = [
+            NavigationItem(id: 0, title: "핸들 왼쪽", imageName: "l.joystick.tilt.left", destination: AnyView(ListView1())),
+            NavigationItem(id: 1, title: "핸들 오른쪽", imageName: "r.joystick.tilt.right", destination: AnyView(ListView2())),
+            NavigationItem(id: 2, title: "센터페시아", imageName: "exclamationmark.brakesignal", destination: AnyView(ListView3())),
+            NavigationItem(id: 3, title: "경고등", imageName: "exclamationmark.triangle", destination: AnyView(ListView4()))
+        ]
     
+    var body: some View {
+        
+            VStack{
+                
+                Text("기능 분류")
+                    .foregroundColor(.black)
+                    .padding(.top, 20)
+                
+                NavigationView {
+                    ZStack{
+                        Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
+                        List {
+                            
+                            ForEach(navigationItems, id: \.id) { item in
+                                
+                                NavigationLink(destination: item.destination) {
+                                    
+                                    Label(item.title, systemImage: item.imageName)
+                                        .padding(.vertical, 20)
+                                    
+                                }.foregroundColor(Color.black)
+                                .task {
+                                    if handleleftdetails.isEmpty {
+                                        loadhandleleft()
+                                    }
+                                    if handlerightdetails.isEmpty {
+                                        loadhandleright()
+                                    }
+                                    if centerfisciadetails.isEmpty {
+                                        loadcenterfiscia()
+                                    }
+                                    if warninglightdetails.isEmpty {
+                                        loadwarninglight()
+                                    }
+                                    
+                                }
+                                
+                            }.listRowBackground(Color.white)
+                        }
+                        .scrollContentBackground(.hidden)
+                    }
+                }
+                
+            
             
             
         }

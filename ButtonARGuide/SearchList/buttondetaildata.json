@@ -1,0 +1,141 @@
+{
+    "handleleft" : [{
+        "name" : "voice",
+        "text" : "음성인식",
+        "num" : 1,
+        "img" : "https://i.ibb.co/8Xw21WM/image.png"
+    },
+        {
+            "name" : "selectmode",
+            "text" : "모드선택",
+            "num" : 2,
+            "img" : "https://i.ibb.co/zrmKBv1/image.png"
+        },
+        {
+            "name" : "volume",
+            "text" : "음량조절",
+            "num" : 3,
+            "img" : "https://i.ibb.co/BwWxD0R/image.png"
+        },
+        {
+            "name" : "explore",
+            "text" : "탐색",
+            "num" : 4,
+            "img" : "https://i.ibb.co/b34p6Hq/image.png"
+        },
+            {
+                "name" : "call",
+                "text" : "통화",
+                "num" : 5,
+                "img" : "https://i.ibb.co/Nx7rsx1/image.png"
+            },
+            {
+                "name" : "endcall",
+                "text" : "통화종료",
+                "num" : 6,
+                "img" : "https://i.ibb.co/gVxptFc/image.png"
+            }],
+    "handleright" : [{
+        "name" : "mode",
+        "text" : "모드",
+        "num" : 7,
+        "img" : "https://i.ibb.co/YZx65yC/image.png"
+    },
+        {
+        "name" : "cruise",
+        "text" : "크루즈실",
+        "num" : 8,
+        "img" : "https://i.ibb.co/9ndnbw9/image.png"
+    },
+        {
+            "name" : "selectmenu",
+            "text" : "메뉴선택",
+            "num" : 9,
+            "img" : "https://i.ibb.co/bPv6mW2/image.png"
+        },
+        {
+            "name" : "cruisesettings",
+            "text" : "크루즈설정",
+            "num" : 10,
+            "img" : "https://i.ibb.co/rdzKHHc/image.png"
+        },
+        {
+            "name" : "ok",
+            "text" : "확인",
+            "num" : 11,
+            "img" : "https://i.ibb.co/fd2HL0X/image.png"
+        },
+        {
+            "name" : "cruisecancel",
+            "text" : "크루즈해제",
+            "num" : 12,
+            "img" : "https://i.ibb.co/VWFSs3F/image.png"
+        }],
+    
+    "centerfiscia" : [{
+        "name" : "controlauto",
+        "text" : "전자동 조절 버튼",
+        "num" : 13,
+        "img" : "https://i.ibb.co/tCNnhBf/image.png"
+    },
+        {
+        "name" : "stopworking",
+        "text" : "작동 정지",
+        "num" : 14,
+        "img" : "https://i.ibb.co/5jv2DwC/image.png"
+    },
+        {
+            "name" : "frontwindowdefog",
+            "text" : "앞유리 서리제거 버튼",
+            "num" : 15,
+            "img" : "https://i.ibb.co/QKskJhV/image.png"
+        },
+        {
+            "name" : "rearwindowdefog",
+            "text" : "뒷유리 서리제거 버튼",
+            "num" : 16,
+            "img" : "https://i.ibb.co/VMsQDVF/image.png"
+        },
+        {
+            "name" : "winddirection",
+            "text" : "바람 방향 선택 버튼",
+            "num" : 17,
+            "img" : "https://i.ibb.co/grctvdt/image.png"
+        },
+        {
+            "name" : "airconditioner",
+            "text" : "에어컨 선택 버튼",
+            "num" : 18,
+            "img" : "https://i.ibb.co/Yf6W6M4/image.png"
+        },
+        {
+            "name" : "airselection",
+            "text" : "내/외기 공기 선택 버튼",
+            "num" : 19,
+            "img" : "https://i.ibb.co/7QyZ0zC/image.png"
+        }],
+    "warninglight" : [{
+        "name" : "EPS",
+        "text" : "전동 파워 스티어링 경고등",
+        "num" : 20,
+        "img" : "https://i.ibb.co/hB92scP/EPS.png"
+    },
+        {
+        "name" : "TPMS",
+        "text" : "저압타이어 경고등",
+        "num" : 21,
+        "img" : "https://i.ibb.co/6XQsWSZ/TPMS.png"
+    },
+        {
+            "name" : "AEB",
+            "text" : "AEB 경고등",
+            "num" : 22,
+            "img" : "https://i.ibb.co/6FGYhWx/AEB.png"
+        },
+        {
+            "name" : "ESC",
+            "text" : "ESC 작동 표시등",
+            "num" : 23,
+            "img" : "https://i.ibb.co/qjXjBY5/ESC.png"
+        }]
+}

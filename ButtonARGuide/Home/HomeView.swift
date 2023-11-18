@@ -85,19 +85,14 @@ struct HomeView: View {
                         }
                         .tabItem {
                             Image(systemName: "camera.circle.fill")
-                                //.padding(.leading, 0)
+                                
                             Text("메인")
                           
                         }
                         ZStack{
                             Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
-                            ScrollViewReader { scrollView in
-                                ScrollView {
-                                    ZStack{
-                                        SearchView().padding(.top, 70)
-                                    }
-                                }
-                            }
+
+                            SearchView().padding(.top, 10)
                         }
                         .tabItem {
                             Image(systemName: "magnifyingglass.circle.fill")
