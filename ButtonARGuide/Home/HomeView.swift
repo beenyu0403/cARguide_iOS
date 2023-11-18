@@ -101,15 +101,9 @@ struct HomeView: View {
                         
                         ZStack{
                             Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
-                            ScrollViewReader { scrollView in
-                                ScrollView {
-                                    ZStack{
-                                        
-                                        
-                                        MyPageView()
-                                    }
-                                }
-                            }
+
+                            MyPageView()
+                           
                         }
                         .tabItem {
                             Image(systemName: "person.crop.circle.fill")

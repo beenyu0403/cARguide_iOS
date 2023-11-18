@@ -15,16 +15,16 @@ struct blueGroupBox: GroupBoxStyle {
                 .foregroundColor(.white)
             RoundedRectangle(cornerRadius: 12)
                 .padding(.horizontal)
-                .frame(width: 350, height: 80)
+                .frame(width: 380, height: 80)
                 .foregroundColor(.blue1)
                 .shadow(color: .blue1, radius: 10, x: 0, y: 7).opacity(0.4)
             RoundedRectangle(cornerRadius: 12)
                 .padding(.horizontal)
-                .frame(width: 350, height: 80)
+                .frame(width: 380, height: 80)
                 .foregroundColor(.white)
                 .overlay(configuration.label.padding(.leading, 4), alignment: .topLeading)
             configuration.content
-                .frame(width: 350, height: 70)
+                .frame(width: 380, height: 70)
         }
                         
     }

@@ -14,6 +14,7 @@
 		CE276C9D2B088B910054F122 /* ListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE276C9C2B088B910054F122 /* ListView3.swift */; };
 		CE276C9F2B088B9B0054F122 /* ListView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE276C9E2B088B9B0054F122 /* ListView4.swift */; };
 		CE276CA12B088BE40054F122 /* ButtonListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE276CA02B088BE40054F122 /* ButtonListModel.swift */; };
+		CE276CA32B089CAB0054F122 /* PreviousHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE276CA22B089CAB0054F122 /* PreviousHistoryView.swift */; };
 		CE2F6BA62AC68F5B00B83A76 /* ButtonARGuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F6BA52AC68F5B00B83A76 /* ButtonARGuideApp.swift */; };
 		CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */; };
 		CE2F6BAA2AC68F5D00B83A76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2F6BA92AC68F5D00B83A76 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		CE276C9C2B088B910054F122 /* ListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView3.swift; sourceTree = "<group>"; };
 		CE276C9E2B088B9B0054F122 /* ListView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView4.swift; sourceTree = "<group>"; };
 		CE276CA02B088BE40054F122 /* ButtonListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListModel.swift; sourceTree = "<group>"; };
+		CE276CA22B089CAB0054F122 /* PreviousHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousHistoryView.swift; sourceTree = "<group>"; };
 		CE2F6BA22AC68F5B00B83A76 /* ButtonARGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonARGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2F6BA52AC68F5B00B83A76 /* ButtonARGuideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonARGuideApp.swift; sourceTree = "<group>"; };
 		CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,8 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				CE4090F42AD85A7A0057316A /* HomeView.swift */,
-				CE4090F92AD869EB0057316A /* MyPageView.swift */,
 				CE4090FB2AD86B2E0057316A /* SearchView.swift */,
+				CE4090F92AD869EB0057316A /* MyPageView.swift */,
+				CE276CA22B089CAB0054F122 /* PreviousHistoryView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				CE50BBA12AD99BC100D34F5A /* ARSceneView.swift in Sources */,
 				CE276C9F2B088B9B0054F122 /* ListView4.swift in Sources */,
 				CE50BBA32AD99BE700D34F5A /* Coordinator.swift in Sources */,
+				CE276CA32B089CAB0054F122 /* PreviousHistoryView.swift in Sources */,
 				CE4090FA2AD869EB0057316A /* MyPageView.swift in Sources */,
 				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
 				CE276C9D2B088B910054F122 /* ListView3.swift in Sources */,
