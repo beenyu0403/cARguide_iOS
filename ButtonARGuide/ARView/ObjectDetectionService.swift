@@ -26,7 +26,7 @@ class ObjectDetectionService {
             }
             // 식별자의 이름(label)을 확인하기 위해 VNClassificationObservation로 변환해준다.
             guard let classification = request.results as? [VNCoreMLFeatureValueObservation] else {
-                fatalError("DEBUG: Faild convert VN ~~ Observation")
+                fatalError("DEBUG: Faild convert VNObservation")
             }
             
             // 결과값이 담긴 Array
@@ -55,8 +55,8 @@ class ObjectDetectionService {
                     
                     let featureName = self.getFeatureName(for: classLabelIndex - 4)
                     print("DEBUG: Confidence가 \(curConfidence)로 0.9 이상입니다.")
-                    print("DEBUG: Box size는 \([x, y, width, height]) 입니다")
-                    print("DEBUG: Class label index는 \(featureName)")
+                    print("DEBUG: Box info는 \([x, y, width, height]) 입니다")
+                    print("DEBUG: Class name은 \(featureName) 입니다.")
                     print("DEBUG: --------------------------------------------")
                     
                     
