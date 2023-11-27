@@ -1,0 +1,15 @@
+{
+  "Outputs" : {
+    "var_904" : {
+      "MLFeatureShortDescription" : "batch_size x 탐지횟수 x (x, y, width, height, confidence, 예측클래스 23개)"
+    }
+  },
+  "Inputs" : {
+    "image" : {
+      "MLFeatureShortDescription" : "640x640 RGB image"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

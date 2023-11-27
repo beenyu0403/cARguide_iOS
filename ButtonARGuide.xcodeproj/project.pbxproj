@@ -12,8 +12,7 @@
 		0504E87D2B0DCE6000B4EECA /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */; };
 		0504E87F2B0DCEBB00B4EECA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E87E2B0DCEBB00B4EECA /* Throttler.swift */; };
 		0504E8812B0DF0DA00B4EECA /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E8802B0DF0DA00B4EECA /* SCNVector3+Extension.swift */; };
-		0504E8832B0E3BAF00B4EECA /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0504E8822B0E3BAF00B4EECA /* YOLOv3Int8LUT.mlmodel */; };
-		05B743392B04FC59008295FB /* ButtonDetector.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 05B743382B04FC59008295FB /* ButtonDetector.mlpackage */; };
+		056A34482B124F0700221778 /* ButtonDetector.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 056A34472B124F0700221778 /* ButtonDetector.mlpackage */; };
 		93248465E3122CBBA9BF0F08 /* Pods_ButtonARGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF5F7AB28CA249BCCB05FC7 /* Pods_ButtonARGuide.framework */; };
 		CE2F6BA62AC68F5B00B83A76 /* ButtonARGuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F6BA52AC68F5B00B83A76 /* ButtonARGuideApp.swift */; };
 		CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F6BA72AC68F5B00B83A76 /* ContentView.swift */; };
@@ -45,8 +44,7 @@
 		0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
 		0504E87E2B0DCEBB00B4EECA /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		0504E8802B0DF0DA00B4EECA /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
-		0504E8822B0E3BAF00B4EECA /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
-		05B743382B04FC59008295FB /* ButtonDetector.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ButtonDetector.mlpackage; sourceTree = "<group>"; };
+		056A34472B124F0700221778 /* ButtonDetector.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ButtonDetector.mlpackage; sourceTree = "<group>"; };
 		180B42E0541FC00D0B95CA6B /* Pods-ButtonARGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonARGuide.debug.xcconfig"; path = "Target Support Files/Pods-ButtonARGuide/Pods-ButtonARGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		8BF5F7AB28CA249BCCB05FC7 /* Pods_ButtonARGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ButtonARGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2F6BA22AC68F5B00B83A76 /* ButtonARGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonARGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +114,6 @@
 		CE2F6BA42AC68F5B00B83A76 /* ButtonARGuide */ = {
 			isa = PBXGroup;
 			children = (
-				05B743382B04FC59008295FB /* ButtonDetector.mlpackage */,
-				0504E8822B0E3BAF00B4EECA /* YOLOv3Int8LUT.mlmodel */,
 				CE4090F62AD869820057316A /* ARView */,
 				CE4090F32AD85A6D0057316A /* Home */,
 				CE4090EE2AD84C220057316A /* Info.plist */,
@@ -176,6 +172,7 @@
 		CE4090F62AD869820057316A /* ARView */ = {
 			isa = PBXGroup;
 			children = (
+				056A34472B124F0700221778 /* ButtonDetector.mlpackage */,
 				0504E87E2B0DCEBB00B4EECA /* Throttler.swift */,
 				0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */,
 				0504E8782B0CDA3700B4EECA /* UIDevice+Extension.swift */,
@@ -300,9 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056A34482B124F0700221778 /* ButtonDetector.mlpackage in Sources */,
 				CE50BBA52AD9A78700D34F5A /* PlaceHolderExtentsion.swift in Sources */,
-				0504E8832B0E3BAF00B4EECA /* YOLOv3Int8LUT.mlmodel in Sources */,
-				05B743392B04FC59008295FB /* ButtonDetector.mlpackage in Sources */,
 				CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */,
 				CE2F6BA82AC68F5B00B83A76 /* ContentView.swift in Sources */,
 				CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */,
