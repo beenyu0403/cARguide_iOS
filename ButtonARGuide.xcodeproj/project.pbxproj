@@ -36,6 +36,7 @@
 		CE50BBA12AD99BC100D34F5A /* ARSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50BBA02AD99BC100D34F5A /* ARSceneView.swift */; };
 		CE50BBA32AD99BE700D34F5A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50BBA22AD99BE700D34F5A /* Coordinator.swift */; };
 		CE50BBA52AD9A78700D34F5A /* PlaceHolderExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50BBA42AD9A78700D34F5A /* PlaceHolderExtentsion.swift */; };
+		CEAE35BE2B119697004E7739 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35BD2B119697004E7739 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		CE50BBA02AD99BC100D34F5A /* ARSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneView.swift; sourceTree = "<group>"; };
 		CE50BBA22AD99BE700D34F5A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE50BBA42AD9A78700D34F5A /* PlaceHolderExtentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderExtentsion.swift; sourceTree = "<group>"; };
+		CEAE35BD2B119697004E7739 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				CE276C9C2B088B910054F122 /* ListView3.swift */,
 				CE276C9E2B088B9B0054F122 /* ListView4.swift */,
 				CE276CA02B088BE40054F122 /* ButtonListModel.swift */,
+				CEAE35BD2B119697004E7739 /* Helpers.swift */,
 			);
 			path = SearchList;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				CE276CA32B089CAB0054F122 /* PreviousHistoryView.swift in Sources */,
 				CE4090FA2AD869EB0057316A /* MyPageView.swift in Sources */,
 				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
+				CEAE35BE2B119697004E7739 /* Helpers.swift in Sources */,
 				CE276C9D2B088B910054F122 /* ListView3.swift in Sources */,
 				CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */,
 				CE4090FC2AD86B2F0057316A /* SearchView.swift in Sources */,
@@ -459,12 +463,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ButtonARGuide/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5GM4NDSD45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ButtonARGuide/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,7 +479,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Unique-i.net.user.ButtonARGuide";
+				PRODUCT_BUNDLE_IDENTIFIER = "uuzaza.CoreML-Object-Detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -489,12 +496,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ButtonARGuide/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5GM4NDSD45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ButtonARGuide/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -502,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Unique-i.net.user.ButtonARGuide";
+				PRODUCT_BUNDLE_IDENTIFIER = "uuzaza.CoreML-Object-Detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

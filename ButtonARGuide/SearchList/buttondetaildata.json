@@ -118,24 +118,28 @@
         "name" : "EPS",
         "text" : "전동 파워 스티어링 경고등",
         "num" : 20,
-        "img" : "https://i.ibb.co/hB92scP/EPS.png"
+        "img" : "https://i.ibb.co/hB92scP/EPS.png",
+        "detail" : "시동을 [ON]으로 하거나 전동 파워 스티어링 시스템이 고장일 경우 경고등이 켜집니다.\n\n전동 파워 스티어링 경고등은 차량에 문제가 없더라도 시동 [ON] 상태에서 약 3초간 점등되었다가 소등됩니다."
     },
         {
         "name" : "TPMS",
         "text" : "저압타이어 경고등",
         "num" : 21,
-        "img" : "https://i.ibb.co/6XQsWSZ/TPMS.png"
+        "img" : "https://i.ibb.co/6XQsWSZ/TPMS.png",
+        "detail" : "시동 [ON] 상태에서 약 3초간 경고등이 점등됩니다.\n\n만약 경고등이 점등하지 않거나 일정 시간(약 1분) 점멸 후 점등하면 타이어 공기압 감지 시스템에 이상이 있는 것이므로 서비스센터에 의뢰하십시오.\n\n타이어 공기압이 현저하게 낮아질 경우 저압 타이어 경고등이 점등됩니다."
     },
         {
             "name" : "AEB",
             "text" : "AEB 경고등",
             "num" : 22,
-            "img" : "https://i.ibb.co/6FGYhWx/AEB.png"
+            "img" : "https://i.ibb.co/6FGYhWx/AEB.png",
+            "detail" : "사용자 설정 모드에서 긴급제동 보조 시스템 기능이 꺼져있거나 시스템에 이상이 있을 경우 경고등이 켜집니다.\n\n사용자 설정 모드에서 기능 사용으로 설정이 되었음에도 경고등이 켜진다면 서비스센터에 정비를 의뢰하십시오."
         },
         {
             "name" : "ESC",
             "text" : "ESC 작동 표시등",
             "num" : 23,
-            "img" : "https://i.ibb.co/qjXjBY5/ESC.png"
+            "img" : "https://i.ibb.co/qjXjBY5/ESC.png",
+            "detail" : "시동 [ON] 상태에서 표시등이 점등되고, ESC장치에 이상이 없으면 약 3초 후 꺼집니다.\n\n운행중 차체 자세 제어장치(ESC)가 작동할 때는 작동하는 동안 점멸됩니다.\n\n단, ESC 작동 표시등이 소등되지 않고 계속 점등되거나 주행 중 점등될 경우 ESC 장치에 이상이 생긴 것이므로 서비스센터에서 점검을 받으십시오."
         }]
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ListView1: View {
     @State private var sheetTodo: Detaillabel?
     @State private var buttonname: String = ""
+    @State private var isshow: Bool = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     // MARK: - 뒤로가기 구성
     var backButton : some View {  // <--커스텀 버튼
@@ -37,9 +38,15 @@ struct ListView1: View {
                             HStack {
                                 Text(d.text)
                                 Spacer()
-                                Button("+") {
-                                    sheetTodo = d
-                                    buttonname = d.name
+                                if !isshow  {
+                                    Button(action: {
+                                        sheetTodo = d
+                                        buttonname = d.name
+                                    }){
+                                        Text("+")
+                                    }
+                                }else{
+                                    Text("+")
                                 }
                             }
                             .foregroundColor(Color.black)
@@ -55,16 +62,25 @@ struct ListView1: View {
                 .sheet(item: $sheetTodo) { todo in
                     VStack {
                         Text("상세 설명")
-                        AsyncImage(url: URL(string: "\(todo.img)")) { image in
-                            image
-                                .resizable()
-                                .clipShape(Circle())
-                                .frame(width: 100,height: 100)
-                        }placeholder: {
-                            ProgressView()
-                        }.padding(.bottom, 50)
+//                        AsyncImage(url: URL(string: "\(todo.img)")) { image in
+//                            image
+//                                .resizable()
+//                                .clipShape(Circle())
+//                                .frame(width: 100,height: 100)
+//                        }placeholder: {
+//                            ProgressView()
+//                        }.padding(.bottom, 50)
+                        Image("\(todo.text)")
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 100,height: 100)
+                            .padding(.bottom, 50)
                         Text("Task: \(todo.text)")
                         Text("Number: \(todo.num)")
+                    }.onDisappear() {
+                        isshow = false
+                    }.onAppear() {
+                        isshow = true
                     }
                 }
                 

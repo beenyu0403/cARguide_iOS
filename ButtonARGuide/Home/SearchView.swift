@@ -92,6 +92,7 @@ struct SearchView: View {
                             }.listRowBackground(Color.white)
                         }
                         .scrollContentBackground(.hidden)
+                        .padding(.top, 40)
                     }
                 }
                 

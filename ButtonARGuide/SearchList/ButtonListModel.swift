@@ -23,9 +23,17 @@ struct Detaillabel: Identifiable {
   var num: Int
     var img: String
 }
-
+struct Detaillabel2: Identifiable {
+  let id = UUID()
+  var name: String
+  var text: String
+  var num: Int
+    var img: String
+    var detail:String
+}
 struct ListInfo: Codable {
-    var handleleft, handleright, centerfiscia, warninglight: [Meta]
+    var handleleft, handleright, centerfiscia: [Meta]
+    var warninglight: [Meta2]
 }
 
 struct Meta: Codable {
@@ -33,10 +41,16 @@ struct Meta: Codable {
     var num: Int
     var img: String
 }
+struct Meta2: Codable {
+    var name, text: String
+    var num: Int
+    var img: String
+    var detail:String
+}
 var handleleftdetails : [Detaillabel] = []
 var handlerightdetails : [Detaillabel] = []
 var centerfisciadetails : [Detaillabel] = []
-var warninglightdetails : [Detaillabel] = []
+var warninglightdetails : [Detaillabel2] = []
 
 func loadhandleleft() {
     let data: Data
@@ -102,7 +116,7 @@ func loadwarninglight() {
             let listInfo = try decoder.decode(ListInfo.self, from: data)
             let listList = listInfo.warninglight
             for i in listList {
-                warninglightdetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
+                warninglightdetails.append(Detaillabel2(name: i.name, text: i.text, num: i.num, img: i.img, detail: i.detail))
                 print(i.text)
             }
         } catch {

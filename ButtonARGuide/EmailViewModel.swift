@@ -85,6 +85,7 @@ class EmailViewModel: ObservableObject {
     func nameState(currentemail: String) -> String{
         let userDB = db.collection("USER")
        var message = ""
+        var searchlist = ""
         //userDB.document(currentUser?.email ?? "").addSnapshotListener { (qs, err) in
         userDB.document(currentemail).addSnapshotListener { (qs, err) in
                 guard let document = qs else {
@@ -98,4 +99,50 @@ class EmailViewModel: ObservableObject {
         }
         return message
     }
+//    func detailState(currentemail: String) {
+//        let userDB = db.collection("PreviousHistory")
+//        predates = []
+//        prelabels = []
+//        predetails = []
+//        
+//        
+//        var m = ""
+//        userDB.document(currentemail).collection("data").addSnapshotListener { (qs, err) in
+//                guard let document = qs else {
+//                    print("Error: \(err!)")
+//                    return
+//                }
+//            //predates.append(document.get("date") as? String ?? "")
+//            
+//            var messages = [Message]()
+//            qs?.documentChanges.forEach { change in
+//                switch change.type {
+//                case .added, .modified:
+//                    do {
+//                        if let message = try? change.document.data(as: Message.self) {
+//                            predates.append(message.date)
+//                            prelabels.append(message.label)
+//                            predetails.append(message.detail)
+//                            messages.append(message)
+//                            
+//                        }
+//                    }catch {
+//                        print("fail")
+//                    }
+//                default: break
+//                }
+//            }
+//            premessages=messages
+//           
+//        }
+//        
+//        
+//    }
+
+    
+}
+struct Message: Codable {
+    let date: String
+    let detail: String
+    let label: String
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyPageView: View {
+    @EnvironmentObject var EmailviewModel: EmailViewModel
     var body: some View {
         NavigationStack() {
             ZStack {
@@ -39,10 +40,13 @@ struct MyPageView: View {
                         Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
                         NavigationLink(destination: PreviousHistoryView()) {
                             GroupBox {
-                                Text("이전 기록")
+                                Text("AR 화면 검색 기록")
                                     .foregroundColor(.black)
                             }.groupBoxStyle(blueGroupBox())
-                                
+                                .task {
+//                                    EmailviewModel.detailState(currentemail: currentUser?.email ?? "비로그인")
+                                    
+                                }
                         }
                         .padding(.bottom, 360)
                         

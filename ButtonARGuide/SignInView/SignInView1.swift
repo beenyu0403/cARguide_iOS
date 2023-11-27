@@ -112,6 +112,9 @@ struct SignInView1: View {
                     else{
                         PlaceHolderField2("비밀번호 입력 (8자리 이상, 영어+숫자)", font: .custom("", fixedSize: 11), color: .gray, text: $userPw)
                         //SecureField("비밀번호 입력 (8자리 이상, 영어+숫자)", text: $userPw)
+                            .onChange(of: userPw){ _ in
+                                isNotUser = false
+                            }
                             .focused($focusField, equals: .userPw)
                             .disableAutocorrection(true) //자동 수정 비활성화
                             .textInputAutocapitalization(.never)
@@ -153,8 +156,10 @@ struct SignInView1: View {
                 if nextButtonCondition ()  {
                     Button(action: {
                         if isActiveLogin {
+                            
                             self.isPresented.toggle()
                             self.isNotUser = false
+                            
                         }else {
                             self.isNotUser = true
                             print("로그인 실패")
@@ -258,8 +263,7 @@ struct SignInView1: View {
     
 }
 
-struct SignInView1_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView1()
-    }
+#Preview {
+    SignInView1()
 }
+
