@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0504E8772B0CD58E00B4EECA /* ObjectDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E8762B0CD58E00B4EECA /* ObjectDetectionService.swift */; };
+		0504E8792B0CDA3700B4EECA /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E8782B0CDA3700B4EECA /* UIDevice+Extension.swift */; };
+		0504E87D2B0DCE6000B4EECA /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */; };
+		0504E87F2B0DCEBB00B4EECA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E87E2B0DCEBB00B4EECA /* Throttler.swift */; };
+		0504E8812B0DF0DA00B4EECA /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504E8802B0DF0DA00B4EECA /* SCNVector3+Extension.swift */; };
+		056A34482B124F0700221778 /* ButtonDetector.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 056A34472B124F0700221778 /* ButtonDetector.mlpackage */; };
 		93248465E3122CBBA9BF0F08 /* Pods_ButtonARGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF5F7AB28CA249BCCB05FC7 /* Pods_ButtonARGuide.framework */; };
 		CE276C962B088B070054F122 /* buttondetaildata.json in Resources */ = {isa = PBXBuildFile; fileRef = CE276C952B088B070054F122 /* buttondetaildata.json */; };
 		CE276C992B088B7F0054F122 /* ListView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE276C982B088B7F0054F122 /* ListView1.swift */; };
@@ -41,6 +47,12 @@
 
 /* Begin PBXFileReference section */
 		0064B1DA267BDB4C60AFBF78 /* Pods-ButtonARGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonARGuide.release.xcconfig"; path = "Target Support Files/Pods-ButtonARGuide/Pods-ButtonARGuide.release.xcconfig"; sourceTree = "<group>"; };
+		0504E8762B0CD58E00B4EECA /* ObjectDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionService.swift; sourceTree = "<group>"; };
+		0504E8782B0CDA3700B4EECA /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
+		0504E87E2B0DCEBB00B4EECA /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
+		0504E8802B0DF0DA00B4EECA /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
+		056A34472B124F0700221778 /* ButtonDetector.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ButtonDetector.mlpackage; sourceTree = "<group>"; };
 		180B42E0541FC00D0B95CA6B /* Pods-ButtonARGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonARGuide.debug.xcconfig"; path = "Target Support Files/Pods-ButtonARGuide/Pods-ButtonARGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		8BF5F7AB28CA249BCCB05FC7 /* Pods_ButtonARGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ButtonARGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE276C952B088B070054F122 /* buttondetaildata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buttondetaildata.json; sourceTree = "<group>"; };
@@ -192,8 +204,14 @@
 		CE4090F62AD869820057316A /* ARView */ = {
 			isa = PBXGroup;
 			children = (
+				056A34472B124F0700221778 /* ButtonDetector.mlpackage */,
+				0504E87E2B0DCEBB00B4EECA /* Throttler.swift */,
+				0504E87C2B0DCE6000B4EECA /* BubbleNode.swift */,
+				0504E8782B0CDA3700B4EECA /* UIDevice+Extension.swift */,
 				CE50BBA02AD99BC100D34F5A /* ARSceneView.swift */,
 				CE50BBA22AD99BE700D34F5A /* Coordinator.swift */,
+				0504E8762B0CD58E00B4EECA /* ObjectDetectionService.swift */,
+				0504E8802B0DF0DA00B4EECA /* SCNVector3+Extension.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -312,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056A34482B124F0700221778 /* ButtonDetector.mlpackage in Sources */,
 				CE50BBA52AD9A78700D34F5A /* PlaceHolderExtentsion.swift in Sources */,
 				CE276CA12B088BE40054F122 /* ButtonListModel.swift in Sources */,
 				CE4090ED2AD84AC60057316A /* SignInView1.swift in Sources */,
@@ -320,18 +339,23 @@
 				CE276C9B2B088B880054F122 /* ListView2.swift in Sources */,
 				CE4090F22AD852F50057316A /* SignUpView3.swift in Sources */,
 				CE4090F52AD85A7A0057316A /* HomeView.swift in Sources */,
+				0504E87F2B0DCEBB00B4EECA /* Throttler.swift in Sources */,
 				CE4090EA2AD845BF0057316A /* KeyboardExtension.swift in Sources */,
 				CE50BBA12AD99BC100D34F5A /* ARSceneView.swift in Sources */,
 				CE276C9F2B088B9B0054F122 /* ListView4.swift in Sources */,
+				0504E8812B0DF0DA00B4EECA /* SCNVector3+Extension.swift in Sources */,
 				CE50BBA32AD99BE700D34F5A /* Coordinator.swift in Sources */,
 				CE276CA32B089CAB0054F122 /* PreviousHistoryView.swift in Sources */,
 				CE4090FA2AD869EB0057316A /* MyPageView.swift in Sources */,
+				0504E8772B0CD58E00B4EECA /* ObjectDetectionService.swift in Sources */,
 				CE4090E62AD8453D0057316A /* SignUpView1.swift in Sources */,
 				CEAE35BE2B119697004E7739 /* Helpers.swift in Sources */,
 				CE276C9D2B088B910054F122 /* ListView3.swift in Sources */,
 				CE4090E82AD845890057316A /* ColorExtentsion.swift in Sources */,
+				0504E8792B0CDA3700B4EECA /* UIDevice+Extension.swift in Sources */,
 				CE4090FC2AD86B2F0057316A /* SearchView.swift in Sources */,
 				CE2F6BA62AC68F5B00B83A76 /* ButtonARGuideApp.swift in Sources */,
+				0504E87D2B0DCE6000B4EECA /* BubbleNode.swift in Sources */,
 				CE4090DB2AD83F530057316A /* EmailViewModel.swift in Sources */,
 				CE4090E42AD8451A0057316A /* SignUpView2.swift in Sources */,
 			);

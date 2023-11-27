@@ -7,52 +7,181 @@
 //
 
 import SwiftUI
-
 import ARKit
-import RealityKit
+import Vision
 
 struct ARViewContainer: UIViewRepresentable {
-    // To Do: 모델 추가
+    var objectDetectionService = ObjectDetectionService()
+    let throttler = Throttler(minimumDelay: 1, queue: .global(qos: .userInteractive))
+    var lastLocation: SCNVector3?
+    var sessionInfo: String = ""
     
-    // MARK: - Create UIView(UIKit) & initialize
-    func makeUIView(context: Context) -> ARView {
-        print("AR DUBUG: Make UIView")
-        // To Do: Navigation bar에 사용법 버튼 생성 및 사용법 페이지 생성
+    var arView = ARSCNView()
+    @State var isLoopShouldContinue = true
+    
+    func makeUIView(context: Context) -> ARSCNView {
+        arView.session.delegate = context.coordinator
+        arView.delegate = context.coordinator
+        arView.scene = SCNScene()
         
-        // Screen size : 1179*2556(iPhone 15 pro)
-        let arView = ARView(frame: .zero)
-        print("AR DEBUG: ARView appear")
+        // 기타 ARSCNView 설정
+        arView.autoenablesDefaultLighting = true
         
-        // To Do: ARReferenceImage를 이용하여 이미지 트래킹을 하는 방법도 고려
-        // To Do: environmentTexturing를 이용해서 텍스처링하는 방법도 고려
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        arView.session.run(configuration)
-        
-        // Add tag mesh when (tap) recognized
-        arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.isViewTapped)))
+        startSession()
         
         return arView
+    }
+    
+    func updateUIView(_ view: ARSCNView, context: Context) {
+        print("DEBUG: Update UIView")
+        startSession()
     }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
-    // MARK: - Update UIView(UIKit)
-    // When SwiftUI interface state change
-    func updateUIView(_ uiView: ARView, context: Context) {
-        print("AR DEBUG: Update UIView")
+    func startSession(resetTracking: Bool = false) {
+        print("DEBUG: Start AR session")
+        guard ARWorldTrackingConfiguration.isSupported else { return }
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        
+        if resetTracking {
+            arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        } else {
+            arView.session.run(configuration)
+        }
+    }
+    
+    func stopSession() {
+        print("DEBUG: Stop AR session")
+        arView.session.pause()
+        isLoopShouldContinue = false
+    }
+    
+    func loopObjectDetection() {
+        throttler.throttle {
+            if self.isLoopShouldContinue {
+                self.performDetection()
+            }
+            self.loopObjectDetection()
+        }
+    }
+    
+    func performDetection() {
+        print("DEBUG: --------------------------------------------")
+        print("DEBUG: Perform detection")
+        guard let pixelBuffer = arView.session.currentFrame?.capturedImage else { return }
+        
+        objectDetectionService.detect(on: .init(pixelBuffer: pixelBuffer)) { result in
+            switch result {
+            case .success(let response):
+                // 한번에 얻어낸 결과들 전부 Add annotation을 통해 Label mesh 추가
+                for res in response {
+                    // 얻어낸 Bounding box를 Normal box로 변경
+                    let rectOfInterest = VNImageRectForNormalizedRect(
+                        res.boundingBox,
+                        Int(arView.bounds.width),
+                        Int(arView.bounds.height))
+                    
+                    self.addAnnotation(rectOfInterest: rectOfInterest,
+                                       text: res.classification)
+                    
+                }
+            
+            case .failure(let error):
+                break
+            }
+        }
+    }
+    
+    func addAnnotation(rectOfInterest rect: CGRect, text: String) {
+        print("DEBUG: Add annotaion function called")
+            
+        
+        let point = CGPoint(x: rect.minX, y: rect.minY)
+//        
+//        let scnHitTestResults = arView.hitTest(point,
+//                                               options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
+//        guard !scnHitTestResults.contains(where: { $0.node.name == BubbleNode.name })
+//        else {
+//            print("DEBUG: Node is already exist")
+//            return
+//        }
+        
+        guard let raycastQuery = arView.raycastQuery(from: point,
+                                                     allowing: .estimatedPlane,
+                                                     alignment: .any),
+              let raycastResult = arView.session.raycast(raycastQuery).first
+                else {
+                    print("DEBUG: Raycast result error")
+                    return
+                }
+        let position = SCNVector3(raycastResult.worldTransform.columns.3.x,
+                                  raycastResult.worldTransform.columns.3.y,
+                                  raycastResult.worldTransform.columns.3.z)
+
+        guard let cameraPosition = arView.pointOfView?.position else {
+            return
+        }
+        
+        let bubbleNode = BubbleNode(text: text)
+        bubbleNode.worldPosition = position
+        
+        arView.prepare([bubbleNode]) { success in
+            if success {
+                print("DEBUG: Add annotation")
+                self.arView.scene.rootNode.addChildNode(bubbleNode)
+            }
+        }
+    }
+    
+    mutating func onSessionUpdate(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
+        self.isLoopShouldContinue = false
+        
+        let message: String
+        
+        switch trackingState {
+        case .normal where frame.anchors.isEmpty:
+            message = "표면을 감지하기 위해 기기를 상하좌우로 움직여주세요."
+            
+        case .notAvailable:
+            message = "탐지가 불가능합니다."
+            
+        case .limited(.excessiveMotion):
+            message = "탐지 한계 - 기기를 천천히 움직여주세요."
+            
+        case .limited(.insufficientFeatures):
+            message = "탐지 한계 - 기기가 표면이 정확한 곳을 향하게 하거나 불빛이 더 밝게 되도록 해주세요."
+            
+        case .limited(.initializing):
+            message = "AR 화면을 구성합니다."
+            
+        default:
+            // No feedback needed when tracking is normal and planes are visible.
+            // (Nor when in unreachable limited-tracking states.)
+            message = "AR 화면이 준비되었습니다."
+            isLoopShouldContinue = true
+            loopObjectDetection()
+        }
+        
+        sessionInfo = message
+        
+        if message != "AR 화면이 준비되었습니다." {
+            print("DEBUG: 세션 알림 -> \(sessionInfo)")
+        }
     }
 }
 
-// MARK: - Content View
 struct ARSceneView : View {
     var body: some View {
-        ARViewContainer().edgesIgnoringSafeArea(.all)
+        let arViewContainer = ARViewContainer()
+        ZStack {
+            arViewContainer.ignoresSafeArea(.all)
+        }.onDisappear() {
+            arViewContainer.stopSession()
+        }
     }
 }
 
-#Preview {
-    ARSceneView()
-}
