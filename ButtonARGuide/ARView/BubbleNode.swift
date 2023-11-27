@@ -1,28 +1,27 @@
 import ARKit
+import SwiftUI
 
 class BubbleNode: SCNNode {
     static let name = String(describing: BubbleNode.self)
     
-    let bubbleDepth: CGFloat = 0.1
-    let hiddenGeometry = SCNSphere(radius: 0.15)
+    let bubbleDepth: CGFloat = 0.03
+    let hiddenGeometry = SCNSphere(radius: 0.1)
     
     init(text: String) {
         super.init()
         
-        let billboardConstraint = SCNBillboardConstraint()
+        let billboardConstraint = SCNBillboardConstraint()  // Mesh 정렬
         billboardConstraint.freeAxes = SCNBillboardAxis.Y
         
         // BUBBLE-TEXT
         let bubble = SCNText(string: text, extrusionDepth: CGFloat(bubbleDepth))
-        print("DEBUG: \(text)")
+        print("DEBUG: Node initialize and name is \(text)")
         
-        let font = UIFont(name: "Futura", size: 0.15)
-         bubble.font = font
+        let font = UIFont(name: "Futura", size: 0.2)
+        bubble.font = font
         bubble.alignmentMode = CATextLayerAlignmentMode.center.rawValue
-        bubble.firstMaterial?.diffuse.contents = UIColor.orange
         bubble.firstMaterial?.specular.contents = UIColor.white
         bubble.firstMaterial?.isDoubleSided = true
-        // bubble.flatness // setting this too low can cause crashes.
         bubble.chamferRadius = CGFloat(bubbleDepth)
         
         
@@ -39,7 +38,7 @@ class BubbleNode: SCNNode {
         
         // CENTRE POINT NODE
         let sphere = SCNSphere(radius: 0.005)
-        sphere.firstMaterial?.diffuse.contents = UIColor.cyan
+        sphere.firstMaterial?.diffuse.contents = UIColor.gray
         let sphereNode = SCNNode(geometry: sphere)
         
         let searchNode = SCNNode(geometry: hiddenGeometry)

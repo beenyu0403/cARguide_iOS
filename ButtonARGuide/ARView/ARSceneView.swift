@@ -13,23 +13,17 @@ import Vision
 struct ARViewContainer: UIViewRepresentable {
     var objectDetectionService = ObjectDetectionService()
     let throttler = Throttler(minimumDelay: 1, queue: .global(qos: .userInteractive))
-    var isLoopShouldContinue = true
-    var lastLocation: SCNVector3?   // 마지막 카메라 위치 저장
+    var lastLocation: SCNVector3?
+    var sessionInfo: String = ""
     
     var arView = ARSCNView()
-    @Binding var sessionInfo: String
-    var sessionInfoLabel = UILabel()
-
+    @State var isLoopShouldContinue = true
     
     func makeUIView(context: Context) -> ARSCNView {
-        print("DUBUG: Make UIView")
-        
         arView.session.delegate = context.coordinator
         arView.delegate = context.coordinator
-        // -> delegate 설정할때 뭔가 문제가 생김
-        // 이거 없애니까 View위에 Text 뜨는것도 없어짐
         arView.scene = SCNScene()
-
+        
         // 기타 ARSCNView 설정
         arView.autoenablesDefaultLighting = true
         
@@ -40,7 +34,6 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ view: ARSCNView, context: Context) {
         print("DEBUG: Update UIView")
-        
         startSession()
     }
     
@@ -50,10 +43,7 @@ struct ARViewContainer: UIViewRepresentable {
     
     func startSession(resetTracking: Bool = false) {
         print("DEBUG: Start AR session")
-        guard ARWorldTrackingConfiguration.isSupported else {
-            assertionFailure("ARKit is not supported")
-            return
-        }
+        guard ARWorldTrackingConfiguration.isSupported else { return }
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         
@@ -67,12 +57,11 @@ struct ARViewContainer: UIViewRepresentable {
     func stopSession() {
         print("DEBUG: Stop AR session")
         arView.session.pause()
+        isLoopShouldContinue = false
     }
     
     func loopObjectDetection() {
-        throttler.throttle { /*[weak self] in*/
-//            guard let self = self else { return }
-            
+        throttler.throttle {
             if self.isLoopShouldContinue {
                 self.performDetection()
             }
@@ -81,73 +70,80 @@ struct ARViewContainer: UIViewRepresentable {
     }
     
     func performDetection() {
+        print("DEBUG: --------------------------------------------")
         print("DEBUG: Perform detection")
-        guard let pixelBuffer = arView.session.currentFrame?.capturedImage else { 
-            print("DEBUG: Get current frame error")
-            return
-        }
-        objectDetectionService.detect(pixelBuffer: pixelBuffer)
+        guard let pixelBuffer = arView.session.currentFrame?.capturedImage else { return }
         
-//        objectDetectionService.detect(on: .init(pixelBuffer: pixelBuffer)) { /*[weak self]*/ result in
-////            guard let self = self else { return }
-//            switch result {
-//            case .success(let response):
-//                let rectOfInterest = VNImageRectForNormalizedRect(
-//                    response.boundingBox,
-//                    Int(self.arView.bounds.width),
-//                    Int(self.arView.bounds.height))
-//                
-//                self.addAnnotation(rectOfInterest: rectOfInterest,
-//                                   text: response.classification)
-//            
-//            case .failure(let error):
-//                break
-//            }
-//        }
+        objectDetectionService.detect(on: .init(pixelBuffer: pixelBuffer)) { result in
+            switch result {
+            case .success(let response):
+                // 한번에 얻어낸 결과들 전부 Add annotation을 통해 Label mesh 추가
+                for res in response {
+                    // 얻어낸 Bounding box를 Normal box로 변경
+                    let rectOfInterest = VNImageRectForNormalizedRect(
+                        res.boundingBox,
+                        Int(arView.bounds.width),
+                        Int(arView.bounds.height))
+                    
+                    self.addAnnotation(rectOfInterest: rectOfInterest,
+                                       text: res.classification)
+                    
+                }
+            
+            case .failure(let error):
+                break
+            }
+        }
     }
     
     func addAnnotation(rectOfInterest rect: CGRect, text: String) {
-        print("DEBUG: Add annotation")
-        let point = CGPoint(x: rect.midX, y: rect.midY)
+        print("DEBUG: Add annotaion function called")
+            
         
-        let scnHitTestResults = arView.hitTest(point,
-                                                  options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
-        guard !scnHitTestResults.contains(where: { $0.node.name == BubbleNode.name }) else { return }
+        let point = CGPoint(x: rect.minX, y: rect.minY)
+//        
+//        let scnHitTestResults = arView.hitTest(point,
+//                                               options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
+//        guard !scnHitTestResults.contains(where: { $0.node.name == BubbleNode.name })
+//        else {
+//            print("DEBUG: Node is already exist")
+//            return
+//        }
         
         guard let raycastQuery = arView.raycastQuery(from: point,
-                                                        allowing: .existingPlaneInfinite,
-                                                        alignment: .horizontal),
-              let raycastResult = arView.session.raycast(raycastQuery).first else { return }
+                                                     allowing: .estimatedPlane,
+                                                     alignment: .any),
+              let raycastResult = arView.session.raycast(raycastQuery).first
+                else {
+                    print("DEBUG: Raycast result error")
+                    return
+                }
         let position = SCNVector3(raycastResult.worldTransform.columns.3.x,
                                   raycastResult.worldTransform.columns.3.y,
                                   raycastResult.worldTransform.columns.3.z)
 
-        guard let cameraPosition = arView.pointOfView?.position else { return }
-        
-        let distance = (position - cameraPosition).length()
-        guard distance <= 0.5 else { return }
+        guard let cameraPosition = arView.pointOfView?.position else {
+            return
+        }
         
         let bubbleNode = BubbleNode(text: text)
         bubbleNode.worldPosition = position
         
-        arView.prepare([bubbleNode]) { /*[weak self]*/ success in
+        arView.prepare([bubbleNode]) { success in
             if success {
+                print("DEBUG: Add annotation")
                 self.arView.scene.rootNode.addChildNode(bubbleNode)
             }
         }
     }
     
     mutating func onSessionUpdate(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
-        print("DEBUG: On session update")
-        
         self.isLoopShouldContinue = false
         
-        // Update the UI to provide feedback on the state of the AR experience.
         let message: String
         
         switch trackingState {
         case .normal where frame.anchors.isEmpty:
-            // No planes detected; provide instructions for this app's AR interactions.
             message = "표면을 감지하기 위해 기기를 상하좌우로 움직여주세요."
             
         case .notAvailable:
@@ -165,34 +161,27 @@ struct ARViewContainer: UIViewRepresentable {
         default:
             // No feedback needed when tracking is normal and planes are visible.
             // (Nor when in unreachable limited-tracking states.)
-            message = ""
+            message = "AR 화면이 준비되었습니다."
             isLoopShouldContinue = true
             loopObjectDetection()
         }
         
-        print("DEBUG: 세션 알림 -> \(message)")
-//        sessionInfo = message
-//        if message.isEmpty {
-//            sessionInfo.removeAll()
-//        }
+        sessionInfo = message
         
-//        sessionInfoLabel.isHidden = message.isEmpty
+        if message != "AR 화면이 준비되었습니다." {
+            print("DEBUG: 세션 알림 -> \(sessionInfo)")
+        }
     }
 }
 
 struct ARSceneView : View {
-    @State private var sessionInfo = ""
-    
     var body: some View {
-        ZStack{
-            ARViewContainer(sessionInfo: $sessionInfo)
-                .ignoresSafeArea(edges: .all)
-            Text(sessionInfo)
+        let arViewContainer = ARViewContainer()
+        ZStack {
+            arViewContainer.ignoresSafeArea(.all)
+        }.onDisappear() {
+            arViewContainer.stopSession()
         }
- 
     }
 }
 
-#Preview {
-    ARSceneView()
-}

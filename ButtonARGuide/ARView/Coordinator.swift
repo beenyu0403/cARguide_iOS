@@ -20,6 +20,9 @@ class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
         self.parent = parent
     }
     
+    @objc func tapToDetect(_ sender: UITapGestureRecognizer) {
+        parent.performDetection()
+    }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         guard let frame = session.currentFrame else { return }
@@ -42,10 +45,12 @@ class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
         let location = SCNVector3(transform.m41, transform.m42, transform.m43)
         let currentPositionOfCamera = orientation + location
         
+        // 너무 빠를때 세션 멈춤
         if let lastLocation = parent.lastLocation {
             let speed = (lastLocation - currentPositionOfCamera).length()
             parent.isLoopShouldContinue = speed < 0.0025
         }
+        
         parent.lastLocation = currentPositionOfCamera
     }
     
@@ -53,16 +58,16 @@ class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay.
-        parent.sessionInfoLabel.text = "Session was interrupted"
+        parent.sessionInfo = "Session was interrupted"
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required.
-        parent.sessionInfoLabel.text = "Session interruption ended"
+        parent.sessionInfo = "Session interruption ended"
         parent.startSession(resetTracking: true)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
-        parent.sessionInfoLabel.text = "Session error: \(error.localizedDescription)"
+        parent.sessionInfo = "Session error: \(error.localizedDescription)"
     }
  }
