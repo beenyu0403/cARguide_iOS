@@ -6,63 +6,68 @@
 //  Edited by 송영훈 from 10/25/23.
 //
 
+import SwiftUI
 import Foundation
 import ARKit
 import RealityKit
+import Vision
 
-class Coordinator: NSObject {
-    var arContainer: ARViewContainer
+
+class Coordinator: NSObject, ARSCNViewDelegate, ARSessionDelegate {
+    var parent: ARViewContainer
     
-    init(_ container: ARViewContainer) {
-        self.arContainer = container
+    init(_ parent: ARViewContainer) {
+        self.parent = parent
     }
     
-    // MARK: - Add textbox when (tap) action
-    // 나중에 이미지 인식시 추가될 수 있도록 변경
-    @objc func isViewTapped(gesture: UITapGestureRecognizer) {
-        guard let arView = gesture.view as? ARView
-        else { return }
+    @objc func tapToDetect(_ sender: UITapGestureRecognizer) {
+        parent.performDetection()
+    }
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        guard let frame = session.currentFrame else { return }
+        parent.onSessionUpdate(for: frame, trackingState: camera.trackingState)
+    }
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        guard let frame = session.currentFrame else { return }
+        parent.onSessionUpdate(for: frame, trackingState: frame.camera.trackingState)
+    }
+    
+    func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
+        guard let frame = session.currentFrame else { return }
+        parent.onSessionUpdate(for: frame, trackingState: frame.camera.trackingState)
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        let transform = SCNMatrix4(frame.camera.transform)
+        let orientation = SCNVector3(-transform.m31, -transform.m32, transform.m33)
+        let location = SCNVector3(transform.m41, transform.m42, transform.m43)
+        let currentPositionOfCamera = orientation + location
         
-        // get tap location
-        let tapPosition = gesture.location(in: arView)
-        
-        // Convert tap position to AR world
-        if let raycastQuery = arView.makeRaycastQuery(
-            from: tapPosition, allowing: .estimatedPlane,
-            alignment: .any),
-        let raycastResult = arView.session.raycast(raycastQuery).first {
-            let anchor = AnchorEntity(world: raycastResult.worldTransform)
-            arView.scene.addAnchor(anchor)
-            
-            // Mesh
-            // To Do: Text string에 model에서 얻은 label 받기
-            let textMesh = MeshResource.generateText(
-                "Button name",
-                extrusionDepth: 0.01,
-                font: .systemFont(ofSize: 0.02),
-                containerFrame: .zero,
-                alignment: .center,
-                lineBreakMode: .byTruncatingMiddle
-            )
-            // To Do: Background 처리 방식 고민해보자
-            let backgroundMesh = MeshResource.generateBox(size: 0.05)
-            
-            // Mesh to Entity
-            let textEntiy = ModelEntity(
-                mesh: textMesh,
-                materials: [SimpleMaterial(color: .black, isMetallic: false)]
-            )
-            let backgroundEntity = ModelEntity(
-                mesh: backgroundMesh,
-                materials: [SimpleMaterial(color: .white, isMetallic: false)]
-            )
-            
-            // Add Entity to ARView
-            anchor.addChild(textEntiy)
-            anchor.addChild(backgroundEntity)
-            arView.scene.addAnchor(anchor)
+        // 너무 빠를때 세션 멈춤
+        if let lastLocation = parent.lastLocation {
+            let speed = (lastLocation - currentPositionOfCamera).length()
+            parent.isLoopShouldContinue = speed < 0.0025
         }
         
-        print("AR DEBUG: Tag mesh add")
+        parent.lastLocation = currentPositionOfCamera
     }
-}
+    
+    // MARK: - ARSessionObserver
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        // Inform the user that the session has been interrupted, for example, by presenting an overlay.
+        parent.sessionInfo = "Session was interrupted"
+    }
+    
+    func sessionInterruptionEnded(_ session: ARSession) {
+        // Reset tracking and/or remove existing anchors if consistent tracking is required.
+        parent.sessionInfo = "Session interruption ended"
+        parent.startSession(resetTracking: true)
+    }
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        parent.sessionInfo = "Session error: \(error.localizedDescription)"
+    }
+ }
