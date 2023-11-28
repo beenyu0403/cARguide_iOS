@@ -23,7 +23,7 @@ struct ARViewContainer: UIViewRepresentable {
         arView.session.delegate = context.coordinator
         arView.delegate = context.coordinator
         arView.scene = SCNScene()
-
+        
         // 기타 ARSCNView 설정
         arView.autoenablesDefaultLighting = true
 
@@ -44,6 +44,11 @@ struct ARViewContainer: UIViewRepresentable {
     func startSession(resetTracking: Bool = false) {
         print("DEBUG: Start AR session")
         guard ARWorldTrackingConfiguration.isSupported else { return }
+
+        arView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode()
+        }
+        
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
         
@@ -56,9 +61,21 @@ struct ARViewContainer: UIViewRepresentable {
     
     func stopSession() {
         print("DEBUG: Stop AR session")
+        
         arView.session.pause()
         isLoopShouldContinue = false
         throttler.workItem.cancel()
+        objectDetectionService.checkAlreadyPredictLabel.removeAll()
+    }
+    
+    func resetSession() {
+        print("DEBUG: Resset AR session")
+        
+        isLoopShouldContinue = false
+        throttler.workItem.cancel()
+        objectDetectionService.checkAlreadyPredictLabel = [Bool](repeating: false, count: 23)
+
+        startSession(resetTracking: true)
     }
     
     func loopObjectDetection() {
@@ -102,14 +119,6 @@ struct ARViewContainer: UIViewRepresentable {
             
         
         let point = CGPoint(x: rect.minX, y: rect.minY)
-//        
-//        let scnHitTestResults = arView.hitTest(point,
-//                                               options: [SCNHitTestOption.searchMode: SCNHitTestSearchMode.all.rawValue])
-//        guard !scnHitTestResults.contains(where: { $0.node.name == BubbleNode.name })
-//        else {
-//            print("DEBUG: Node is already exist")
-//            return
-//        }
         
         guard let raycastQuery = arView.raycastQuery(from: point,
                                                      allowing: .estimatedPlane,
@@ -160,16 +169,14 @@ struct ARViewContainer: UIViewRepresentable {
             message = "AR 화면을 구성합니다."
             
         default:
-            // No feedback needed when tracking is normal and planes are visible.
-            // (Nor when in unreachable limited-tracking states.)
-            message = "AR 화면이 준비되었습니다."
+            message = ""
             isLoopShouldContinue = true
             loopObjectDetection()
         }
         
         sessionInfo = message
         
-        if message != "AR 화면이 준비되었습니다." {
+        if message != "" {
             print("DEBUG: 세션 알림 -> \(sessionInfo)")
         }
     }
@@ -180,6 +187,14 @@ struct ARSceneView : View {
         let arViewContainer = ARViewContainer()
         ZStack {
             arViewContainer.ignoresSafeArea(.all)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Reset") {
+                            arViewContainer.resetSession()
+                        }
+                    }
+                }
+            
         }.onDisappear() {
             arViewContainer.stopSession()
         }
