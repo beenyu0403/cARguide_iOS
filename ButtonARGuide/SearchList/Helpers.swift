@@ -7,6 +7,9 @@
 
 import Foundation
 
+//수정하기(임시)
+
+
 // The labels for the 23 classes.
 let labels = [
   "음성인식", "모드선택", "음량조절", "탐색", "통화", "통화종료", "모드", "크루즈실",

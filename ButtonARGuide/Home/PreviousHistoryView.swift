@@ -59,7 +59,7 @@ struct PreviousHistoryView: View {
                                     }
                                     
                                     Text("")
-                                    //Text(prelabeldetails[prelabels[e]] ?? "")
+                                    
                                     Text(predetailarray[e])
                                         .foregroundColor(Color.black)
                                 }
