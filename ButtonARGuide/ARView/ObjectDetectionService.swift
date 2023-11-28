@@ -13,7 +13,6 @@ import ARKit
 class ObjectDetectionService {
     var mlModel = try! VNCoreMLModel(for: ButtonDetector().model)
     var checkAlreadyPredictLabel = [Bool](repeating: false, count: 23)
-//    var existLabel = [String]()
     
     lazy var coreMLRequest: VNCoreMLRequest = {
         let request = VNCoreMLRequest(model: mlModel,
@@ -31,6 +30,7 @@ class ObjectDetectionService {
         let orientation = CGImagePropertyOrientation(rawValue:  UIDevice.current.exifOrientation) ?? .up
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: request.pixelBuffer,
                                                         orientation: orientation)
+
         do {
             try imageRequestHandler.perform([coreMLRequest])
         } catch {
@@ -55,12 +55,9 @@ private extension ObjectDetectionService {
         if let multiArray = results.first!.featureValue.multiArrayValue {
             var response = [Response]()
             
-            
             // 배치사이즈를 순회하며 confidence가 임계치 이상인 것을 찾음
             for i in 0..<25200
             where multiArray[[0, i, 4] as [NSNumber]].floatValue > 0.9 {
-                let curConfidence = multiArray[[0, i, 4] as [NSNumber]].floatValue  // 현재 confidence 값
-                
                 let x = (multiArray[[0, i, 0] as [NSNumber]].doubleValue/640)
                 let y = (multiArray[[0, i, 1] as [NSNumber]].doubleValue/640)
                 let width = (multiArray[[0, i, 2] as [NSNumber]].doubleValue/640)
@@ -68,8 +65,6 @@ private extension ObjectDetectionService {
                 
                 var classLabelIndex: Int = 0    // 예측될 클래스 넘버
                 var maxValue: Float = 0.0
-                
-                
                 // 임계치 이상일때 어떤 Class인지 확인
                 for j in 5..<28 {
                     let curLabelValue = multiArray[[0, i, j] as [NSNumber]].floatValue
@@ -79,6 +74,7 @@ private extension ObjectDetectionService {
                     }
                 }
                 
+                // 첫 탐지된 Class를 저장 및 View에 추가
                 if !checkAlreadyPredictLabel[classLabelIndex-5] {
                     checkAlreadyPredictLabel[classLabelIndex-5] = true
 
@@ -90,7 +86,6 @@ private extension ObjectDetectionService {
                                              classification: featureName))
                 }
             }
-            
             complete(.success(response))
         }
     }
@@ -164,59 +159,6 @@ extension ObjectDetectionService {
             return "ESC 작동 표시등"
         default:
             return "알 수 없는 기능"
-        }
-    }
-    
-    func getFeatureNameInEN(for input: Int) -> String {
-        switch input {
-        case 1:
-            return "Voice recognize"
-        case 2:
-            return "Mode Select"
-        case 3:
-            return "Vol control"
-        case 4:
-            return "Explore"
-        case 5:
-            return "Call"
-        case 6:
-            return "End call"
-        case 7:
-            return "Mode"
-        case 8:
-            return "Cruise on"
-        case 9:
-            return "Menu select"
-        case 10:
-            return "Cruise Set"
-        case 11:
-            return "Ok"
-        case 12:
-            return "Cruise off"
-        case 13:
-            return "Auto adjust"
-        case 14:
-            return "Stop"
-        case 15:
-            return "Front defrost"
-        case 16:
-            return "Rear defrost"
-        case 17:
-            return "Wind direction"
-        case 18:
-            return "Conditioner"
-        case 19:
-            return "Switch air in/ex"
-        case 20:
-            return "Power steering warn"
-        case 21:
-            return "Low pressure tire"
-        case 22:
-            return "AEB warning"
-        case 23:
-            return "ESC operating"
-        default:
-            return "Unknown Features"
         }
     }
 }

@@ -1,15 +1,7 @@
-//
-//  Throttler.swift
-//  CoreML-in-ARKit
-//
-//  Created by Yehor Chernenko on 01.08.2020.
-//  Copyright © 2020 Yehor Chernenko. All rights reserved.
-//
-
 import Foundation
 
 class Throttler {
-    private var workItem: DispatchWorkItem = DispatchWorkItem { }
+    var workItem: DispatchWorkItem = DispatchWorkItem { }
     private var previousRun: Date = Date.distantPast
     private let queue: DispatchQueue
     private let minimumDelay: TimeInterval
