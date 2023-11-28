@@ -29,8 +29,8 @@ struct MyPageView: View {
                                 .bold()
                                 .padding()
                                 .multilineTextAlignment(.leading)
-                            //Text(currentUser?.email ?? "비로그인")
                             Text(currentUserName)
+                            Text(currentUser?.email ?? "비로그인")
                             Spacer().frame(height:50)
                         }
                         
@@ -44,12 +44,30 @@ struct MyPageView: View {
                                     .foregroundColor(.black)
                             }.groupBoxStyle(blueGroupBox())
                                 .task {
-//                                    EmailviewModel.detailState(currentemail: currentUser?.email ?? "비로그인")
+                                    EmailviewModel.detailState(currentemail: currentUser?.email ?? "비로그인")
                                     
                                 }
                         }
-                        .padding(.bottom, 360)
-                        
+                        .padding(.bottom, 320)
+                        GeometryReader { geo in
+                            let w = geo.size.width
+                            let h = 250
+                            
+                            TabView {
+                                ForEach(1..<5) { index in
+                                    Image("공지\(index)")
+                                        .resizable()
+                                        .frame(width: w, height: CGFloat(h))
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            .tabViewStyle(.page)
+                            .frame(width: w, height: CGFloat(h))
+                            .padding(.top, 160)
+                            .onAppear(){
+                                setupAppearance()
+                            }
+                        }
                     }
                     
                 }
@@ -57,6 +75,10 @@ struct MyPageView: View {
             }
         }
     }
+    func setupAppearance() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.buttonblue1)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(.buttonblue1).withAlphaComponent(0.2)
+      }
 }
 
 struct MyPageView_Previews: PreviewProvider {

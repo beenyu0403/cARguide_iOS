@@ -17,13 +17,35 @@ class BubbleNode: SCNNode {
         let bubble = SCNText(string: text, extrusionDepth: CGFloat(bubbleDepth))
         print("DEBUG: Node initialize and name is \(text)")
         
-        let font = UIFont(name: "Futura", size: 0.2)
-        bubble.font = font
+        //let font = UIFont(name: "Futura", size: 0.2)
+        let font = UIFont(name: "Arial", size: 0.2)
+//        bubble.font = font
         bubble.alignmentMode = CATextLayerAlignmentMode.center.rawValue
         bubble.firstMaterial?.specular.contents = UIColor.white
         bubble.firstMaterial?.isDoubleSided = true
         bubble.chamferRadius = CGFloat(bubbleDepth)
+        //bubble.firstMaterial?.diffuse.contents = UIColor(.blue1)
+        bubble.font = font
         
+        let now = Date()
+        let dateForm1 = DateFormatter()
+        dateForm1.locale = Locale(identifier: "UTC")
+        dateForm1.timeZone = TimeZone(abbreviation: "KST")
+        dateForm1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let time2 = dateForm1.string(for: now)
+        date1 = time2 ?? ""
+
+        db.collection("PreviousHistory").document(currentUser?.email ?? "").collection("data").document("\(date1)_\(text)").setData([
+            "date": date1,
+            "detail": prelabeldetails[text] ?? "",
+            "label" : text
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
         
         
         // BUBBLE NODE

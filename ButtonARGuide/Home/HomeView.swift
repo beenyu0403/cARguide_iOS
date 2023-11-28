@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var tag:Int? = nil
+    @State var tag:Int? = 0
     @State var selectedCar = ""
     var cars = ["차종을 선택하세요", "올 뉴 모닝 (2018)", "기타"]
     
@@ -96,7 +96,7 @@ struct HomeView: View {
                         }
                         .tabItem {
                             Image(systemName: "magnifyingglass.circle.fill")
-                            Text("검색")
+                            Text("리스트")
                         }
                         
                         ZStack{
@@ -113,7 +113,10 @@ struct HomeView: View {
                     }.toolbarBackground(.red, for: .tabBar)
                     .accentColor(.blue1)
             
-                }
+                }.navigationViewStyle(StackNavigationViewStyle())
+            .task{
+                self.tag = 0
+            }
     }
     
 }

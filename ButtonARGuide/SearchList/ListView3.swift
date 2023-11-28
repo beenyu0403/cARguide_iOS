@@ -60,6 +60,10 @@ struct ListView3: View {
                 .scrollContentBackground(.hidden)
                 .sheet(item: $sheetTodo) { todo in
                     VStack {
+                        Image("centerfisciaimage")
+                            .resizable()
+                            .frame(width: 350, height: 250)
+                            .padding(.bottom, 50)
                         Text("상세 설명")
 //                        AsyncImage(url: URL(string: "\(todo.img)")) { image in
 //                            image
@@ -69,11 +73,20 @@ struct ListView3: View {
 //                        }placeholder: {
 //                            ProgressView()
                         //}.padding(.bottom, 50)
-                        Image("\(todo.text)")
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 100,height: 100)
-                            .padding(.bottom, 50)
+                        if (todo.text == "내/외기 공기 선택 버튼"){
+                            Image("내외기 공기 선택 버튼")
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 100,height: 100)
+                                .padding(.bottom, 50)
+                        }else{
+                            Image("\(todo.text)")
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 100,height: 100)
+                                .padding(.bottom, 50)
+                        }
+                     
                         Text("Task: \(todo.text)")
                         Text("Number: \(todo.num)")
                     }.onDisappear() {

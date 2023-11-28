@@ -99,45 +99,46 @@ class EmailViewModel: ObservableObject {
         }
         return message
     }
-//    func detailState(currentemail: String) {
-//        let userDB = db.collection("PreviousHistory")
-//        predates = []
-//        prelabels = []
-//        predetails = []
-//        
-//        
-//        var m = ""
-//        userDB.document(currentemail).collection("data").addSnapshotListener { (qs, err) in
-//                guard let document = qs else {
-//                    print("Error: \(err!)")
-//                    return
-//                }
-//            //predates.append(document.get("date") as? String ?? "")
-//            
-//            var messages = [Message]()
-//            qs?.documentChanges.forEach { change in
-//                switch change.type {
-//                case .added, .modified:
-//                    do {
-//                        if let message = try? change.document.data(as: Message.self) {
-//                            predates.append(message.date)
-//                            prelabels.append(message.label)
-//                            predetails.append(message.detail)
-//                            messages.append(message)
-//                            
-//                        }
-//                    }catch {
-//                        print("fail")
-//                    }
-//                default: break
-//                }
-//            }
-//            premessages=messages
-//           
-//        }
-//        
-//        
-//    }
+    func detailState(currentemail: String) {
+        let userDB = db.collection("PreviousHistory")
+        predates = []
+        prelabels = []
+        predetails = []
+        
+        
+        var m = ""
+        userDB.document(currentemail).collection("data").addSnapshotListener { (qs, err) in
+                guard let document = qs else {
+                    print("Error: \(err!)")
+                    return
+                }
+            //predates.append(document.get("date") as? String ?? "")
+            
+            var messages = [Message]()
+            qs?.documentChanges.forEach { change in
+                switch change.type {
+                case .added, .modified:
+                    do {
+                        if let message = try? change.document.data() {
+                            predates.append(message["date"] as? String ?? "")
+                            //predates.append(message.date)
+                            prelabels.append(message["label"] as? String ?? "")
+                            predetails.append(message["detail"] as? String ?? "")
+                            //messages.append(message)
+                            
+                        }
+                    }catch {
+                        print("fail")
+                    }
+                default: break
+                }
+            }
+            //premessages=messages
+           
+        }
+        
+        
+    }
 
     
 }

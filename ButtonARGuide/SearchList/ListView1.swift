@@ -61,6 +61,10 @@ struct ListView1: View {
                 .scrollContentBackground(.hidden)
                 .sheet(item: $sheetTodo) { todo in
                     VStack {
+                        Image("lefthandle")
+                            .resizable()
+                            .frame(width: 350, height: 250)
+                            .padding(.bottom, 50)
                         Text("상세 설명")
 //                        AsyncImage(url: URL(string: "\(todo.img)")) { image in
 //                            image

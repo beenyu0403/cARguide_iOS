@@ -63,7 +63,7 @@ func loadhandleleft() {
             let listList = listInfo.handleleft
             for i in listList {
                 handleleftdetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
-                print(i.text)
+                //print(i.text)
             }
         } catch {
             print("Can not load Json file.")
@@ -81,7 +81,7 @@ func loadhandleright() {
             let listList = listInfo.handleright
             for i in listList {
                 handlerightdetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
-                print(i.text)
+                //print(i.text)
             }
         } catch {
             print("Can not load Json file.")
@@ -99,7 +99,7 @@ func loadcenterfiscia() {
             let listList = listInfo.centerfiscia
             for i in listList {
                 centerfisciadetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
-                print(i.text)
+                //print(i.text)
             }
         } catch {
             print("Can not load Json file.")
@@ -117,7 +117,7 @@ func loadwarninglight() {
             let listList = listInfo.warninglight
             for i in listList {
                 warninglightdetails.append(Detaillabel2(name: i.name, text: i.text, num: i.num, img: i.img, detail: i.detail))
-                print(i.text)
+                //print(i.text)
             }
         } catch {
             print("Can not load Json file.")
