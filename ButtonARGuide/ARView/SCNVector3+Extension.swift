@@ -1,11 +1,3 @@
-//
-//  SCNVector3+Extension.swift
-//  CoreML-in-ARKit
-//
-//  Created by Yehor Chernenko on 01.08.2020.
-//  Copyright © 2020 Yehor Chernenko. All rights reserved.
-//
-
 import ARKit
 
 extension SCNVector3 {

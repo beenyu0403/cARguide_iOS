@@ -23,12 +23,12 @@ struct ARViewContainer: UIViewRepresentable {
         arView.session.delegate = context.coordinator
         arView.delegate = context.coordinator
         arView.scene = SCNScene()
-        
+
         // 기타 ARSCNView 설정
         arView.autoenablesDefaultLighting = true
-        
+
         startSession()
-        
+
         return arView
     }
     
@@ -58,6 +58,7 @@ struct ARViewContainer: UIViewRepresentable {
         print("DEBUG: Stop AR session")
         arView.session.pause()
         isLoopShouldContinue = false
+        throttler.workItem.cancel()
     }
     
     func loopObjectDetection() {
