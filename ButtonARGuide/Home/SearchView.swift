@@ -52,6 +52,7 @@ struct SearchView: View {
             NavigationItem(id: 3, title: "경고등", imageName: "exclamationmark.triangle", destination: AnyView(ListView4()))
         ]
     
+    // MARK: - 화면 구성
     var body: some View {
         
             VStack{

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyPageView: View {
     @EnvironmentObject var EmailviewModel: EmailViewModel
+    
+    // MARK: - 화면 구성
     var body: some View {
         NavigationStack() {
             ZStack {

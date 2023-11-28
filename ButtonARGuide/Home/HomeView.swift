@@ -14,10 +14,10 @@ struct HomeView: View {
     
     init() {
             UITabBar.appearance().backgroundColor = UIColor.white
-            
         }
+    
     var body: some View {
-        
+        // MARK: - 화면 구성
         NavigationView {
                     TabView {
                         ZStack{

@@ -11,6 +11,8 @@ struct PreviousHistoryView: View {
     @State private var prelabelarray : [String] = prelabels
     @State private var predatearray : [String] = predates
     @State private var predetailarray : [String] = predetails
+    
+    // MARK: - 화면 구성
     var body: some View {
         ZStack{
             Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()

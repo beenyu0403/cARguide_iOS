@@ -26,6 +26,7 @@ struct ListView3: View {
             }
         }
     var body: some View {
+        // MARK: - 화면 구성
         ZStack{
             Color(red: 250 / 255, green: 253 / 255, blue: 255 / 255).ignoresSafeArea()
             

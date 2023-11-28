@@ -17,13 +17,13 @@ struct SignUpView2: View {
     @State var isPresented = false
     @EnvironmentObject var EmailviewModel: EmailViewModel
     
-    //@State var isActiveButton = false
     enum Field: Hashable {
         case userPw, userPw2
       }
     @FocusState private var focusField: Field?
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     // MARK: - 뒤로가기 구성
     var backButton : some View {  // <--커스텀 버튼
             Button{
@@ -38,6 +38,7 @@ struct SignUpView2: View {
                 }
             }
         }
+    
     // MARK: - 화면 구성
     var body: some View {
        
