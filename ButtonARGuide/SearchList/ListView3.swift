@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListView3: View {
-    @State private var sheetTodo: Detaillabel?
+    @State private var sheetTodo: Detaillabel2?
     @State private var buttonname: String = ""
     @State private var isshow: Bool = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -90,6 +90,9 @@ struct ListView3: View {
                      
                         Text("Task: \(todo.text)")
                         Text("Number: \(todo.num)")
+                        Text("Detail: \(todo.detail)")
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 300)
                     }.onDisappear() {
                         isshow = false
                     }.onAppear() {

@@ -32,7 +32,7 @@ struct Detaillabel2: Identifiable {
     var detail:String
 }
 struct ListInfo: Codable {
-    var handleleft, handleright, centerfiscia: [Meta]
+    var handleleft, handleright, centerfiscia: [Meta2]
     var warninglight: [Meta2]
 }
 
@@ -47,9 +47,9 @@ struct Meta2: Codable {
     var img: String
     var detail:String
 }
-var handleleftdetails : [Detaillabel] = []
-var handlerightdetails : [Detaillabel] = []
-var centerfisciadetails : [Detaillabel] = []
+var handleleftdetails : [Detaillabel2] = []
+var handlerightdetails : [Detaillabel2] = []
+var centerfisciadetails : [Detaillabel2] = []
 var warninglightdetails : [Detaillabel2] = []
 
 func loadhandleleft() {
@@ -62,7 +62,7 @@ func loadhandleleft() {
             let listInfo = try decoder.decode(ListInfo.self, from: data)
             let listList = listInfo.handleleft
             for i in listList {
-                handleleftdetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
+                handleleftdetails.append(Detaillabel2(name: i.name, text: i.text, num: i.num, img: i.img, detail: i.detail))
                 //print(i.text)
             }
         } catch {
@@ -80,7 +80,7 @@ func loadhandleright() {
             let listInfo = try decoder.decode(ListInfo.self, from: data)
             let listList = listInfo.handleright
             for i in listList {
-                handlerightdetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
+                handlerightdetails.append(Detaillabel2(name: i.name, text: i.text, num: i.num, img: i.img, detail: i.detail))
                 //print(i.text)
             }
         } catch {
@@ -98,7 +98,7 @@ func loadcenterfiscia() {
             let listInfo = try decoder.decode(ListInfo.self, from: data)
             let listList = listInfo.centerfiscia
             for i in listList {
-                centerfisciadetails.append(Detaillabel(name: i.name, text: i.text, num: i.num, img: i.img))
+                centerfisciadetails.append(Detaillabel2(name: i.name, text: i.text, num: i.num, img: i.img, detail: i.detail))
                 //print(i.text)
             }
         } catch {

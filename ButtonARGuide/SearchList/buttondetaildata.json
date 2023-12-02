@@ -3,116 +3,135 @@
         "name" : "voice",
         "text" : "음성인식",
         "num" : 1,
-        "img" : "https://i.ibb.co/8Xw21WM/image.png"
+        "img" : "https://i.ibb.co/8Xw21WM/image.png",
+        "detail" : "음성인식 버튼입니다."
     },
         {
             "name" : "selectmode",
             "text" : "모드선택",
             "num" : 2,
-            "img" : "https://i.ibb.co/zrmKBv1/image.png"
+            "img" : "https://i.ibb.co/zrmKBv1/image.png",
+            "detail" : "해당 버튼을 눌러 라디오, AUX(사양 적용시), USB(iPad)(사양 적용시), DMB(사양 적용시), CD(사양 적용시) 등을 선택할 수 있습니다.\n\n오디오가 꺼져 있을 때 해당 버튼을 0.8초 이하로 짧게 누르면 오디오가 켜지고, 0.8초 이상 길게 누르면 꺼집니다."
         },
         {
             "name" : "volume",
             "text" : "음량조절",
             "num" : 3,
-            "img" : "https://i.ibb.co/BwWxD0R/image.png"
+            "img" : "https://i.ibb.co/BwWxD0R/image.png",
+            "detail" : "해당 버튼을 올리거나 내리면 음량이 증가/감소합니다."
         },
         {
             "name" : "explore",
             "text" : "탐색",
             "num" : 4,
-            "img" : "https://i.ibb.co/b34p6Hq/image.png"
+            "img" : "https://i.ibb.co/b34p6Hq/image.png",
+            "detail" : "해당 버튼을 0.8초 이하로 짧게 누르면 라디오 수신 시에는 미리 오디오 프리셋 버튼에 설정된 라디오 주파수를 선택할 수 있고, CD에서 음악을 듣고 있을 때에는 다음 또는 이전 곡의 처음을 들려줍니다.\n\n해당 버튼을 0.8초 이상 길게 누르면 라디오 수신시에는 지금 듣고 있는 방송에서 주파수가 증가 또는 감소하여 다음 또는 이전 방송이 있는 곳에서 정지하여 수신하고, CD에서 음악을 듣고 있을 때에는 버튼을 누르고 있는 동안 빨리감기/되감기가 작동됩니다."
         },
             {
                 "name" : "call",
                 "text" : "통화",
                 "num" : 5,
-                "img" : "https://i.ibb.co/Nx7rsx1/image.png"
+                "img" : "https://i.ibb.co/Nx7rsx1/image.png",
+                "detail" : "통화 버튼입니다."
             },
             {
                 "name" : "endcall",
                 "text" : "통화종료",
                 "num" : 6,
-                "img" : "https://i.ibb.co/gVxptFc/image.png"
+                "img" : "https://i.ibb.co/gVxptFc/image.png",
+                "detail" : "통화종료 버튼입니다."
             }],
     "handleright" : [{
         "name" : "mode",
         "text" : "모드",
         "num" : 7,
-        "img" : "https://i.ibb.co/YZx65yC/image.png"
+        "img" : "https://i.ibb.co/YZx65yC/image.png",
+        "detail" : "모드버튼을 눌러 메인 메뉴를 설정할 수 있습니다.\n상, 하로 조정하여 하위 메뉴를 선택하고, [OK]버튼을 눌러 상세 메뉴를 들어가거나 설정을 완료할 수 있습니다.\n계기판 화면에서 [뒤로]를 선택하여 상위메뉴로 돌아갈 수 있습니다."
     },
         {
         "name" : "cruise",
         "text" : "크루즈실",
         "num" : 8,
-        "img" : "https://i.ibb.co/9ndnbw9/image.png"
+        "img" : "https://i.ibb.co/9ndnbw9/image.png",
+        "detail" : "CRUISE 버튼을 누르면 계기판에 크루즈 표시등이 켜집니다. 원하는 속도까지 가속하십시오.\n단, 차량 속도는 30km/h이상, 180km/h이하에서만 설정이 가능합니다."
     },
         {
             "name" : "selectmenu",
             "text" : "메뉴선택",
             "num" : 9,
-            "img" : "https://i.ibb.co/bPv6mW2/image.png"
+            "img" : "https://i.ibb.co/bPv6mW2/image.png",
+            "detail" : "메뉴를 설정할 수 있습니다."
         },
         {
             "name" : "cruisesettings",
             "text" : "크루즈설정",
             "num" : 10,
-            "img" : "https://i.ibb.co/rdzKHHc/image.png"
+            "img" : "https://i.ibb.co/rdzKHHc/image.png",
+            "detail" : "크루즈 버튼을 누르고 원하는 속도에 도달하면 SET- 스위치를 짧게 당겨 내리십시오.\n계기판에 크루즈 설정 표시등이 켜지면서 설정 속도로 주행합니다.\n이때, 가속 페달을 밟지 않아도 설정한 속도를 유지합니다."
         },
         {
             "name" : "ok",
             "text" : "확인",
             "num" : 11,
-            "img" : "https://i.ibb.co/fd2HL0X/image.png"
+            "img" : "https://i.ibb.co/fd2HL0X/image.png",
+            "detail" : "확인 버튼입니다."
         },
         {
             "name" : "cruisecancel",
             "text" : "크루즈해제",
             "num" : 12,
-            "img" : "https://i.ibb.co/VWFSs3F/image.png"
+            "img" : "https://i.ibb.co/VWFSs3F/image.png",
+            "detail" : "크루즈해제 버튼입니다."
         }],
     
     "centerfiscia" : [{
         "name" : "controlauto",
         "text" : "전자동 조절 버튼",
         "num" : 13,
-        "img" : "https://i.ibb.co/tCNnhBf/image.png"
+        "img" : "https://i.ibb.co/tCNnhBf/image.png",
+        "detail" : "전자동 조절 방법\n엔진에 시동을 건 상태에서 다음과 같이 하십시오.\n\n1. 전자동 조절 버튼(AUTO)을 누르면 작동 표시창 내 표시등이 켜지고 설정된 온도에 따라 자동 제어됩니다.\n2. 설정 온도를 바꾸고자 할 때는 온도 조절 노브로 하십시오.\n3. 차 안을 쾌적한 온도로 유지하기 위해서는 계절에 관계없이 [AUTO]의 사용을 권장합니다. 또한 통상 온도는 23도쯤으로 설정하시기를 권장합니다."
     },
         {
         "name" : "stopworking",
         "text" : "작동 정지",
         "num" : 14,
-        "img" : "https://i.ibb.co/5jv2DwC/image.png"
+        "img" : "https://i.ibb.co/5jv2DwC/image.png",
+        "detail" : "작동 정지 버튼을 누르면 바람 방향 선택과 내/외 공기 선택 기능(단, 외기 유입 상태로 전환됨)은 조절 가능하나 그외의 작동은 중지되며 해당 표시등이 꺼집니다."
     },
         {
             "name" : "frontwindowdefog",
             "text" : "앞유리 서리제거 버튼",
             "num" : 15,
-            "img" : "https://i.ibb.co/QKskJhV/image.png"
+            "img" : "https://i.ibb.co/QKskJhV/image.png",
+            "detail" : "앞유리 서리제거 버튼을 누르면 버튼 내 표시등이 켜지고 표시창에 앞유리 서리 제거 표시가 나타납니다.\n\n유리창 습기 방지 기능이 설정된 경우 외기 유입이 자동으로 선택되며 바깥온도에 따라 에어컨도 자동으로 작동합니다.\n풍량 조절 스위치를 눌러 원하는 풍량을 설정하십시오.\n\n 앞유리 서리 제거 버튼을 한 번 더 누르면 버튼 내 표시등이 꺼지고, 각 버튼이 앞유리 서리 제거를 선택하기 이전 설정 상태로 되돌아 갑니다."
         },
         {
             "name" : "rearwindowdefog",
             "text" : "뒷유리 서리제거 버튼",
             "num" : 16,
-            "img" : "https://i.ibb.co/VMsQDVF/image.png"
+            "img" : "https://i.ibb.co/VMsQDVF/image.png",
+            "detail" : "뒷유리 서리제거 버튼입니다."
         },
         {
             "name" : "winddirection",
             "text" : "바람 방향 선택 버튼",
             "num" : 17,
-            "img" : "https://i.ibb.co/grctvdt/image.png"
+            "img" : "https://i.ibb.co/grctvdt/image.png",
+            "detail" : "바람 방향 선택 버튼을 눌러 원하는 위치로 바람의 방향을 선택하십시오."
         },
         {
             "name" : "airconditioner",
             "text" : "에어컨 선택 버튼",
             "num" : 18,
-            "img" : "https://i.ibb.co/Yf6W6M4/image.png"
+            "img" : "https://i.ibb.co/Yf6W6M4/image.png",
+            "detail" : "에어컨 사용을 원하시면 에어컨 선택 버튼을 조절하십시오."
         },
         {
             "name" : "airselection",
             "text" : "내/외기 공기 선택 버튼",
             "num" : 19,
-            "img" : "https://i.ibb.co/7QyZ0zC/image.png"
+            "img" : "https://i.ibb.co/7QyZ0zC/image.png",
+            "detail" : "버튼내 표시등을 실내 순환을 원하시면 점등되도록, 외기 유입을 원하시면 소등되도록 내/외 공기 선택 버튼을 누르십시오.\n\n표시등이 점등되도록 하면 외부 공기는 차단되고, 실내공기만 순환하므로 외부 공기가 오염되어 있을 때와 최대 냉난방을 필요로 할 때 이 위치로 이동하십시오.\n\n표시등이 소등되도록 하면 외부 공기가 들어옵니다. 실내 환기시 사용하십시오."
         }],
     "warninglight" : [{
         "name" : "EPS",
