@@ -89,8 +89,9 @@ struct ListView4: View {
                 
             }
             
-        }.navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton)
+        }
+        //.navigationBarBackButtonHidden(true)
+         //   .navigationBarItems(leading: backButton)
     }
 }
 

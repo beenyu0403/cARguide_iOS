@@ -11,7 +11,7 @@ import Vision
 import ARKit
 
 class ObjectDetectionService {
-    var mlModel = try! VNCoreMLModel(for: ButtonDetector().model)
+    var mlModel = try! VNCoreMLModel(for: ButtonDetector_YOLO_V5().model)
     var checkAlreadyPredictLabel = [Bool](repeating: false, count: 23)
     
     lazy var coreMLRequest: VNCoreMLRequest = {
@@ -57,7 +57,7 @@ private extension ObjectDetectionService {
             
             // 배치사이즈를 순회하며 confidence가 임계치 이상인 것을 찾음
             for i in 0..<25200
-            where multiArray[[0, i, 4] as [NSNumber]].floatValue > 0.9 {
+            where multiArray[[0, i, 4] as [NSNumber]].floatValue > 0.95 {
                 let x = (multiArray[[0, i, 0] as [NSNumber]].doubleValue/640)
                 let y = (multiArray[[0, i, 1] as [NSNumber]].doubleValue/640)
                 let width = (multiArray[[0, i, 2] as [NSNumber]].doubleValue/640)

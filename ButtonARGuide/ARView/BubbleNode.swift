@@ -17,8 +17,8 @@ class BubbleNode: SCNNode {
         let bubble = SCNText(string: text, extrusionDepth: CGFloat(bubbleDepth))
         print("DEBUG: Node initialize and name is \(text)")
         
-        //let font = UIFont(name: "Futura", size: 0.2)
-        let font = UIFont(name: "Arial", size: 0.2)
+        let font = UIFont(name: "Futura", size: 0.2)
+        //let font = UIFont(name: "Arial", size: 0.15)
 //        bubble.font = font
         bubble.alignmentMode = CATextLayerAlignmentMode.center.rawValue
         bubble.firstMaterial?.specular.contents = UIColor.white

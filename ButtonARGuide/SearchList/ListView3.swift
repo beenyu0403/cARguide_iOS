@@ -63,8 +63,8 @@ struct ListView3: View {
                     VStack {
                         Image("centerfisciaimage")
                             .resizable()
-                            .frame(width: 350, height: 250)
-                            .padding(.bottom, 50)
+                            .frame(width: 300, height: 200)
+                            .padding(.bottom, 30)
                         Text("상세 설명")
 //                        AsyncImage(url: URL(string: "\(todo.img)")) { image in
 //                            image
@@ -79,13 +79,13 @@ struct ListView3: View {
                                 .resizable()
                                 .clipShape(Circle())
                                 .frame(width: 100,height: 100)
-                                .padding(.bottom, 50)
+                                .padding(.bottom, 20)
                         }else{
                             Image("\(todo.text)")
                                 .resizable()
                                 .clipShape(Circle())
                                 .frame(width: 100,height: 100)
-                                .padding(.bottom, 50)
+                                .padding(.bottom, 20)
                         }
                      
                         Text("Task: \(todo.text)")
@@ -102,8 +102,9 @@ struct ListView3: View {
                 
             }
             
-        }.navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton)
+        }
+        //.navigationBarBackButtonHidden(true)
+         //   .navigationBarItems(leading: backButton)
     }
 }
 
